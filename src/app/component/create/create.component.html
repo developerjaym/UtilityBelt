@@ -1,0 +1,52 @@
+<app-tool-bar>
+  <button class="create-form__button accent" (click)="save()" [disabled]="form.invalid" *ngIf="creating && tested">Save</button>
+  <button class="create-form__button accent" (click)="update()" [disabled]="form.invalid" *ngIf="!creating && tested">Update</button>
+  <button class="create-form__button" (click)="test()">Test function</button>
+  <button [routerLink]="''">Cancel</button>
+  <button class="create-form__button danger" (click)="confirmDelete = true" *ngIf="!confirmDelete && !creating">Delete</button>
+  <button class="create-form__button danger" (click)="destroy()" *ngIf="confirmDelete">Confirm Delete</button>
+</app-tool-bar>
+
+<iframe *ngIf="sd" [srcdoc]="sd" class="function-place"></iframe>
+
+
+<div class="create-form" [formGroup]="form">
+  <h2>Metadata</h2>
+  <label class="create-form__label">Title
+    <input type="text" formControlName="title" />
+  </label>
+  <label  class="create-form__label">Subtitle
+    <input type="text" formControlName="subtitle" />
+  </label>
+  <label  class="create-form__label">Tags (comma-separated list)
+    <input type="text" formControlName="tags" />
+  </label>
+  <ng-container formArrayName="inputs">
+    <h2>Inputs</h2>
+
+    <div class="create-form__inputs" *ngFor="let inputGroup of inputs.controls; let i = index">
+      <div class="create-form__input-group" [formGroup]="inputGroup">
+        <!-- The repeated input template -->
+        <label  class="create-form__label">Label
+          <input type="text" formControlName="label" />
+        </label>
+        <label  class="create-form__label">Type
+          <select formControlName="type">
+            <option *ngFor="let type of Types" [ngValue]="type">{{type}}</option>
+          </select>
+        </label>
+        <label  class="create-form__label">Initial value
+          <input type="text" formControlName="value" />
+        </label>
+        <button class="create-form__button" (click)="removeInput(i)">Remove input</button>
+      </div>
+    </div>
+    <button class="create-form__button accent" (click)="addInput()">+ Add another input</button>
+  </ng-container>
+  <h2>Function</h2>
+  <label  class="create-form__label">Function (log, print, paramArray) => {{ '{...}' }}
+    <textarea class="create-form__function-input" formControlName="function"></textarea>
+  </label>
+
+</div>
+

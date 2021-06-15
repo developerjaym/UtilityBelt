@@ -1,1 +1,100 @@
-/* You can add global styles to this file, and also import other style files */
+/* Root - with Variables */
+
+:root {
+  /*Only for container backgrounds that should match the page background*/
+  --main-bg-color: rgba(244, 244, 244, 1);
+  --main-fg-color: rgb(9, 9, 9);
+
+  /*For control and component backgrounds*/
+  --secondary-bg-color: rgb(9, 9, 9);
+  --secondary-fg-color: rgb(244, 244, 244);
+
+  --accent-bg-color: rgb(25, 125, 44);
+  --accent-fg-color: rgb(244, 244, 244);
+
+  --danger-bg-color: rgb(125, 25, 44);
+  --danger-fg-color: rgb(244, 244, 244);
+
+  --main-font-size: 16px;
+  --code-font-size: 14px;
+  --code-line-height: 16px;
+  --small-font-size: 12px;
+
+  --snippet-width: 55vw;
+  --snippet-height: 60vh;
+
+  --border-radius: 4px;
+  --border-width-thin: 1px;
+  --border-width-thick: 2px;
+
+  --padding-narrow: 4px;
+  --margin-narrow: 4px;
+
+  --padding-thick: 12px;
+  --margin-thick: 12px;
+
+  --background-image: none;
+
+  --direction: ltr;
+  --text-align: left;
+  --reverse-text-align: right;
+  --flex-align: flex-start;
+  --reverse-flex-align: flex-end;
+  --flex-row-direction: row;
+
+  --svg-dimension: 144px;
+}
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  background-color: var(--main-bg-color);
+}
+div, span {
+  box-sizing: border-box;
+}
+.logo svg {
+  height: calc(0.5 * var(--svg-dimension));
+  width: var(--svg-dimension);
+
+  /* color: white; */
+}
+.logo svg g {
+  fill: var(--secondary-fg-color);
+}
+input, select {
+  border-radius: var(--border-radius);
+  border-width: var(--border-width-thin);
+  padding: var(--padding-narrow);
+}
+button {
+  background-color: var(--main-bg-color);
+  padding: var(--padding-narrow);
+  border-radius: var(--border-radius);
+  border-style: solid;
+  border-width: var(--border-width-thin);
+  height: fit-content;
+}
+.accent {
+  background-color: var(--accent-bg-color);
+  color: var(--accent-fg-color);
+}
+
+.danger {
+  background-color: var(--danger-bg-color);
+  color: var(--danger-fg-color);
+}
+
+* {
+  font-size: var(--main-font-size);
+}
+h2 {
+  font-size: calc(1.5 * var(--main-font-size));
+}
+h1 {
+  font-size: calc(2 * var(--main-font-size));
+}
+
+:disabled {
+  opacity: 0.5;
+}

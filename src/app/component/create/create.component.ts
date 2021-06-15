@@ -1,0 +1,98 @@
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FunctionInputType } from 'src/app/model/function-item';
+import { CustomFunctionService } from 'src/app/service/custom-function.service';
+import { HtmlBuilderService } from 'src/app/service/html-builder.service';
+
+@Component({
+  selector: 'app-create',
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.css'],
+})
+export class CreateComponent implements OnInit {
+  form: FormGroup;
+  Types = Object.keys(FunctionInputType);
+  sd;
+  tested = false;
+  creating = true;
+  confirmDelete = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private customFunctionService: CustomFunctionService,
+    private htmlBuilder: HtmlBuilderService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      id: [new Date().getTime()],
+      title: ['', Validators.required],
+      subtitle: [''],
+      tags: [''],
+      author: ['SELF'],
+      function: [`log('hi')`, Validators.required],
+      inputs: this.fb.array([]),
+    });
+    this.activatedRoute.params.subscribe((map) => {
+      if (map.id) {
+        // Updating... patch the existing value into the form
+        this.patchForm(map.id);
+        this.creating = false;
+      } else {
+        // Creating... prepare an input form group
+        this.addInput();
+        this.creating = true;
+      }
+    });
+  }
+
+  patchForm(id: string) {
+    let item = this.customFunctionService.get(Number(id));
+    this.form.patchValue(item);
+    for (let i = 0; i < item.inputs.length; i++) {
+      this.addInput();
+      this.inputs.at(i).patchValue(item.inputs[i]);
+    }
+  }
+
+  get inputs() {
+    return this.form.get('inputs') as FormArray;
+  }
+
+  addInput() {
+    this.inputs.push(
+      this.fb.group({
+        label: ['', Validators.required],
+        type: ['', Validators.required],
+        value: [''],
+      })
+    );
+  }
+
+  removeInput(i: number) {
+    this.inputs.removeAt(i);
+  }
+
+  save() {
+    this.customFunctionService.save(this.form.value);
+    this.router.navigate(['']);
+  }
+
+  update() {
+    this.customFunctionService.update(this.form.value);
+    this.router.navigate(['']);
+  }
+
+  test() {
+    this.sd = this.htmlBuilder.buildHtmlFromCustomFunctionItem(this.form.value);
+    this.tested = true;
+  }
+
+  destroy() {
+    this.customFunctionService.delete(this.form.value.id);
+    this.router.navigate(['']);
+  }
+}

@@ -1,0 +1,58 @@
+.function-item {
+  border-style: solid;
+  border-width: var(--border-width-thin);
+  border-radius: var(--border-radius);
+  border-color: var(--main-fg-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: var(--flex-align);
+
+  padding: var(--padding-thick);
+  margin: var(--margin-thick);
+}
+.function-item__header {
+  display: grid;
+  grid-template-areas: "title actions"
+  "subtitle subtitle"
+  "author author"
+  "tags tags";
+  width: 100%;
+  row-gap: var(--margin-thick);
+  margin-bottom: var(--margin-thick);
+}
+.function-item__header__title {
+  margin: 0;
+  grid-area: title;
+}
+.function-item__header__subtitle {
+  grid-area: subtitle;
+  font-style: italic;
+}
+.function-item__header__tags {
+  font-size: var(--small-font-size);
+  grid-area: tags;
+}
+.function-item__header__author {
+  grid-area: author;
+}
+.function-item__header__actions {
+  grid-area: actions;
+  justify-self: var(--reverse-flex-align);
+}
+.function-item__body {
+  width: 100%;
+  padding: var(--padding-narrow);
+}
+.function-item__body__inputs {
+  margin-bottom: var(--margin-thick);
+}
+.function-item__body__inputs__label {
+  display: flex;
+  flex-direction: column;
+}
+.function-item__body__iframe {
+  height: 36vh;
+  width: 100%;
+  border: none;
+}

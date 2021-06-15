@@ -1,0 +1,9 @@
+<app-tool-bar>
+  <label>
+    Search
+    <input (keyup.enter)="search($event)">
+  </label>
+  <button class="accent" [routerLink]="'create'">+Create</button>
+</app-tool-bar>
+
+<app-custom-function-item *ngFor="let item of customItems$ | async" [item]="item"></app-custom-function-item>

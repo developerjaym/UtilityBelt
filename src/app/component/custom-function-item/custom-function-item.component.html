@@ -1,0 +1,18 @@
+<div class="function-item">
+  <div class="function-item__header">
+    <h2 class="function-item__header__title">{{ item.title }}</h2>
+    <span class="function-item__header__subtitle">{{ item.subtitle }}</span>
+    <span class="function-item__header__author">Author: {{ item.author }}</span>
+
+    <span class="function-item__header__tags">
+      {{ item.tags | uppercase }}</span
+    >
+    <div class="function-item__header__actions">
+      <button *ngIf="item.author === 'SELF'" [routerLink]="['edit', item.id]">Edit</button>
+    </div>
+  </div>
+  <div class="function-item__body">
+    <iframe class="function-item__body__iframe" *ngIf="sd" [srcdoc]="sd"></iframe>
+  </div>
+</div>
+

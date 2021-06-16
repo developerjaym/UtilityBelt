@@ -11,6 +11,7 @@ import { ToolBarComponent } from './component/tool-bar/tool-bar.component';
 import { CreateComponent } from './component/create/create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomFunctionItemComponent } from './component/custom-function-item/custom-function-item.component';
+import { ImportComponent } from './component/import/import.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CustomFunctionItemComponent } from './component/custom-function-item/cu
     ToolBarComponent,
     LogoComponent,
     CreateComponent,
-    CustomFunctionItemComponent
+    CustomFunctionItemComponent,
+    ImportComponent
   ],
   imports: [
     BrowserModule,

@@ -23,11 +23,17 @@ export class HtmlBuilderService {
 
     let inputs = this.generateInput(item.inputs);
     let button = `<button id="executeButton" onclick="execute()">Execute</button>`;
-    let logArea = `<textarea class="output logs" disabled id="logArea">Logs</textarea>`;
-    let resultArea = `<textarea class="output results" disabled id="resultsArea">Results</textarea>`;
+    let logArea = `<textarea class="output logs" readonly id="logArea" placeholder="logs"></textarea>`;
+    let resultArea = `<textarea onclick="copyResultsToClipboard()" class="output results" readonly id="resultsArea" placeholder="results"></textarea>`;
     let script = `<script>
+    function copyResultsToClipboard() {
+      const text = document.getElementById('resultsArea').value;
+      navigator["clipboard"].writeText(text).then(
+        () => log('Copied ' + text + ' to clipboard successfully.'), () => log('Failed to copy to clipboard. Do it yourself.')
+      );
+    }
   function log(str) {
-    document.getElementById("logArea").value += str;
+    document.getElementById("logArea").value += str + '\\n';
   }
   function print(str) {
     document.getElementById("resultsArea").value += str;
@@ -52,6 +58,9 @@ export class HtmlBuilderService {
     body {
       margin: 0;
     }
+  ::placeholder {
+      color: white;
+  }
   #executeButton {
     background-color: green;
     color: white;

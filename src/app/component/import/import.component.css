@@ -1,0 +1,29 @@
+.import-form {
+  border-style: solid;
+  border-width: var(--border-width-thin);
+  border-radius: var(--border-radius);
+  border-color: var(--main-fg-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  row-gap: var(--margin-narrow);
+
+  padding: var(--padding-thick);
+  margin: var(--margin-thick);
+}
+
+.import-form__button {
+  width: fit-content;
+}
+
+.import-form__label {
+  display: flex;
+  flex-direction: column;
+}
+
+.import-form__json-input {
+  font-family: monospace;
+  width: 100%;
+  height: 36vh;
+}

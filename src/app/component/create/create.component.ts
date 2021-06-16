@@ -3,7 +3,6 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FunctionInputType } from 'src/app/model/function-item';
 import { CustomFunctionService } from 'src/app/service/custom-function.service';
-import { HtmlBuilderService } from 'src/app/service/html-builder.service';
 
 @Component({
   selector: 'app-create',
@@ -17,6 +16,7 @@ export class CreateComponent implements OnInit {
   testing = false;
   creating = true;
   confirmDelete = false;
+  viewJson = false;
 
   constructor(
     private fb: FormBuilder,

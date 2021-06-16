@@ -22,7 +22,7 @@ export class CustomFunctionService {
 
   save(item: CustomFunctionItem): void {
     this.customItems.unshift(item);
-    localStorage.setItem(CustomFunctionService.CUSTOM_FUNCTION_KEY, JSON.stringify(this.customItems.filter(i => i.author === 'SELF')));
+    localStorage.setItem(CustomFunctionService.CUSTOM_FUNCTION_KEY, JSON.stringify(this.customItems.filter(i => i.author !== 'UtilityBelt')));
     this.search(this.lastSearchTerm); // Searching like this will restore the home page to its earlier state
   }
 

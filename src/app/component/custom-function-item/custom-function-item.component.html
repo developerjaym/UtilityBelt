@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="function-item__body">
-    <iframe class="function-item__body__iframe" *ngIf="sd" [srcdoc]="sd"></iframe>
+    <iframe class="function-item__body__iframe" [ngStyle]="{'height': calcHeight()}" *ngIf="sd" [srcdoc]="sd"></iframe>
   </div>
 </div>
 

@@ -7,6 +7,16 @@ import { CustomFunctionItem, FunctionInputType } from '../model/function-item';
 })
 export class HtmlBuilderService {
 
+  public static ROW_GAP = '4px';
+  public static FONT_SIZE = '16px';
+  public static LOGGER_SIZE = '120px';
+  public static INPUT_TEXTAREA_SIZE = '240px';
+  public static INPUT_TEXTAREA_AND_LABEL_SIZE = '264px';
+  public static INPUT_AND_LABEL_SIZE = '45px';
+  public static OUTPUT_SIZE = '240px';
+  public static BUTTON_SIZE = '27px';
+  public static INPUT_SIZE = '27px;'
+
   constructor(private sanitizer: DomSanitizer) { }
 
   buildHtmlFromCustomFunctionItem(item: CustomFunctionItem): SafeHtml {
@@ -39,45 +49,52 @@ export class HtmlBuilderService {
   }
   </script>`;
     let style = `<style>
+    body {
+      margin: 0;
+    }
   #executeButton {
     background-color: green;
     color: white;
+    box-sizing: border-box;
+    height: ${HtmlBuilderService.BUTTON_SIZE};
   }
   .item {
     display: flex;
     flex-direction: column;
     font-family: sans-serif;
-    row-gap: 4px;
+    row-gap: ${HtmlBuilderService.ROW_GAP};
   }
   .inputs {
     display: flex;
     flex-direction: column;
-    row-gap: 4px;
+    row-gap: ${HtmlBuilderService.ROW_GAP};
   }
-  input {
-    font-size: 16px;
+  input, select {
+    font-size: ${HtmlBuilderService.FONT_SIZE};
+    box-sizing: border-box;
+    height: ${HtmlBuilderService.INPUT_SIZE};
   }
   .inputs textarea {
-    height: 24vh;
+    height: ${HtmlBuilderService.INPUT_TEXTAREA_SIZE};
     font-family: monospace;
-    font-size: 16px;
+    font-size:  ${HtmlBuilderService.FONT_SIZE};
   }
   .input-label {
     display: flex;
     flex-direction: column;
-    font-size: 16px;
+    font-size:  ${HtmlBuilderService.FONT_SIZE};
   }
   .output {
     background-color: black;
     color: white;
     font-family: monospace;
-    font-size: 16px;
+    font-size:  ${HtmlBuilderService.FONT_SIZE};
   }
   .results {
-    height: 24vh;
+    height:  ${HtmlBuilderService.OUTPUT_SIZE};
   }
   .logs {
-    height: 12vh;
+    height:  ${HtmlBuilderService.LOGGER_SIZE};
   }
   </style>`;
     let combined = `${style} ${script} <div class="item"> ${inputs} ${button} ${logArea} ${resultArea} </div>`;
@@ -87,7 +104,7 @@ export class HtmlBuilderService {
   generateInput(
     inputValues: { label: string; type: string; value: string }[]
   ): string {
-    let inputHtml = `<div class="inputs">Inputs`;
+    let inputHtml = `<div class="inputs">`;
     for (let i = 0; i < inputValues.length; i++) {
       inputHtml += `<label class="input-label">${inputValues[i].label}`;
       if (inputValues[i].type === FunctionInputType.YES_NO) {
@@ -99,7 +116,7 @@ export class HtmlBuilderService {
           'NO' === inputValues[i].value ? "selected" : ""
         }>NO</option></select>`;
       } else if (inputValues[i].type === FunctionInputType.TEXTAREA) {
-        inputHtml += `<textarea id="${i}" value="${inputValues[i].value}"></textarea>`;
+        inputHtml += `<textarea class="input-textarea" id="${i}" value="${inputValues[i].value}"></textarea>`;
       } else if (inputValues[i].type === FunctionInputType.NUMBER) {
         inputHtml += `<input type="number" id="${i}" value="${inputValues[i].value}">`;
       } else if (inputValues[i].type === FunctionInputType.DATE) {

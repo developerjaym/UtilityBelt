@@ -52,7 +52,6 @@
   flex-direction: column;
 }
 .function-item__body__iframe {
-  height: 36vh;
   width: 100%;
   border: none;
 }

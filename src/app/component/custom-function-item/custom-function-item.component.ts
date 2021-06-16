@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {
-  CustomFunctionItem
+  CustomFunctionItem, FunctionInputType
 } from 'src/app/model/function-item';
-import { CustomFunctionService } from 'src/app/service/custom-function.service';
 import { HtmlBuilderService } from 'src/app/service/html-builder.service';
 
 @Component({
@@ -20,5 +19,22 @@ export class CustomFunctionItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.sd = this.htmlBuilder.buildHtmlFromCustomFunctionItem(this.item);
+  }
+
+  calcHeight(): string {
+    let heightString = `calc(`;
+    heightString += `${HtmlBuilderService.ROW_GAP} + ${HtmlBuilderService.BUTTON_SIZE} + ${HtmlBuilderService.ROW_GAP} + ${HtmlBuilderService.LOGGER_SIZE} + ${HtmlBuilderService.ROW_GAP} + ${HtmlBuilderService.OUTPUT_SIZE} + ${HtmlBuilderService.ROW_GAP}`;
+    for(let i = 0; i < this.item.inputs.length; i++) {
+      if(this.item.inputs[i].type === FunctionInputType.TEXTAREA) {
+        heightString += ` + ${HtmlBuilderService.INPUT_TEXTAREA_AND_LABEL_SIZE}`;
+      }
+      else {
+        heightString += ` + ${HtmlBuilderService.INPUT_AND_LABEL_SIZE}`;
+      }
+      heightString += ` + ${HtmlBuilderService.ROW_GAP}`;
+    }
+    heightString += ` + ${HtmlBuilderService.ROW_GAP})`;
+
+    return heightString;
   }
 }

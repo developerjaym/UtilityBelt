@@ -13,15 +13,14 @@ import { HtmlBuilderService } from 'src/app/service/html-builder.service';
 export class CreateComponent implements OnInit {
   form: FormGroup;
   Types = Object.keys(FunctionInputType);
-  sd;
   tested = false;
+  testing = false;
   creating = true;
   confirmDelete = false;
 
   constructor(
     private fb: FormBuilder,
     private customFunctionService: CustomFunctionService,
-    private htmlBuilder: HtmlBuilderService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -87,8 +86,8 @@ export class CreateComponent implements OnInit {
   }
 
   test() {
-    this.sd = this.htmlBuilder.buildHtmlFromCustomFunctionItem(this.form.value);
     this.tested = true;
+    this.testing = !this.testing;
   }
 
   destroy() {

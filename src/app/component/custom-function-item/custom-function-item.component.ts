@@ -13,6 +13,9 @@ export class CustomFunctionItemComponent implements OnInit {
   @Input()
   item: CustomFunctionItem;
 
+  @Input()
+  testing = false;
+
   sd;
 
   constructor(private htmlBuilder: HtmlBuilderService) {}

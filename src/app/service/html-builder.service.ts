@@ -12,7 +12,7 @@ export class HtmlBuilderService {
   public static LOGGER_SIZE = '120px';
   public static INPUT_TEXTAREA_SIZE = '240px';
   public static INPUT_TEXTAREA_AND_LABEL_SIZE = '264px';
-  public static INPUT_AND_LABEL_SIZE = '45px';
+  public static INPUT_AND_LABEL_SIZE = '46px';
   public static OUTPUT_SIZE = '240px';
   public static BUTTON_SIZE = '27px';
   public static INPUT_SIZE = '27px;'

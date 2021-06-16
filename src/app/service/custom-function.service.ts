@@ -52,14 +52,16 @@ export class CustomFunctionService {
 
   search(term: string): void {
     this.lastSearchTerm = term;
-    term = term.toUpperCase();
+    const splitTerms = term.toUpperCase().split(',').map(t => t.toUpperCase().trim()).filter(Boolean);
     let matchingItems = this.customItems.filter((item) => {
       return (
         item.tags
           .split(',')
           .map((tag) => tag.trim().toUpperCase())
           .filter(Boolean)
-          .includes(term) || item.title.toUpperCase().includes(term)
+          .some(tag => splitTerms.includes(tag))
+          || splitTerms.some(t => item.title.toUpperCase().includes(t))
+          || splitTerms.length === 0
       );
     });
     this.subject.next(matchingItems);

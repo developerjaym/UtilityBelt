@@ -99,7 +99,6 @@ export class HtmlBuilderService {
     display: flex;
     flex-direction: column;
     font-size:  ${HtmlBuilderService.FONT_SIZE};
-    font-weight: bold;
   }
   .output {
     background-color: rgb(9, 9, 9);

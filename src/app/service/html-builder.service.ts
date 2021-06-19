@@ -14,8 +14,8 @@ export class HtmlBuilderService {
   public static INPUT_TEXTAREA_AND_LABEL_SIZE = '264px';
   public static INPUT_AND_LABEL_SIZE = '46px';
   public static OUTPUT_SIZE = '240px';
-  public static BUTTON_SIZE = '27px';
-  public static INPUT_SIZE = '27px;'
+  public static BUTTON_SIZE = '28px';
+  public static INPUT_SIZE = '28px;'
 
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -59,13 +59,16 @@ export class HtmlBuilderService {
       margin: 0;
     }
   ::placeholder {
-      color: white;
+      color: rgba(244, 244, 244, 1);
   }
   #executeButton {
-    background-color: green;
-    color: white;
+    background-color: rgb(25, 125, 44);
+    color: rgba(244, 244, 244, 1);
     box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
     height: ${HtmlBuilderService.BUTTON_SIZE};
+    font-size: ${HtmlBuilderService.FONT_SIZE};
   }
   .item {
     display: flex;
@@ -82,20 +85,25 @@ export class HtmlBuilderService {
     font-size: ${HtmlBuilderService.FONT_SIZE};
     box-sizing: border-box;
     height: ${HtmlBuilderService.INPUT_SIZE};
+    border-width: 1px;
+    border-radius: 4px;
   }
   .inputs textarea {
     height: ${HtmlBuilderService.INPUT_TEXTAREA_SIZE};
     font-family: monospace;
     font-size:  ${HtmlBuilderService.FONT_SIZE};
+    border-width: 1px;
+    border-radius: 4px;
   }
   .input-label {
     display: flex;
     flex-direction: column;
     font-size:  ${HtmlBuilderService.FONT_SIZE};
+    font-weight: bold;
   }
   .output {
-    background-color: black;
-    color: white;
+    background-color: rgb(9, 9, 9);
+    color: rgba(244, 244, 244, 1);
     font-family: monospace;
     font-size:  ${HtmlBuilderService.FONT_SIZE};
   }
@@ -104,6 +112,16 @@ export class HtmlBuilderService {
   }
   .logs {
     height:  ${HtmlBuilderService.LOGGER_SIZE};
+  }
+  .inputs input:hover,.inputs  select:hover,.inputs textarea:hover {
+    border-width: 1px;
+    border-color: green;
+    border-style: solid;
+  }
+  #executeButton:hover {
+    border-width: 1px;
+    border-color: rgb(9, 9, 9);
+    border-style: solid;
   }
   </style>`;
     let combined = `${style} ${script} <div class="item"> ${inputs} ${button} ${logArea} ${resultArea} </div>`;

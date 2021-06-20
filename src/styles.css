@@ -6,7 +6,7 @@
   --main-fg-color: black;
 
   /*For banner*/
-  --banner-bg-color: rgb(60, 5, 99);
+  --banner-bg-color: rgb(72, 72, 72);
   --banner-fg-color: white;
 
   /*For inputs*/
@@ -17,10 +17,10 @@
   --button-bg-color: rgb(224, 224, 224);
   --button-fg-color: black;
 
-  --accent-bg-color: white;
-  --accent-fg-color: #054618;
+  --accent-bg-color: rgb(5, 99, 60);
+  --accent-fg-color: white;
 
-  --danger-bg-color: #78244C;
+  --danger-bg-color: firebrick;
   --danger-fg-color: white;
 
   --main-font-size: 16px;
@@ -67,6 +67,20 @@ div, span {
 }
 .logo svg g {
   fill: var(--banner-fg-color);
+}
+.card {
+  border-style: solid;
+  border-width: var(--border-width-thin);
+  border-radius: var(--border-radius);
+  border-color: var(--main-fg-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  row-gap: var(--margin-narrow);
+
+  padding: var(--padding-thick);
+  margin: var(--margin-thick);
 }
 label {
   font-weight: bold;

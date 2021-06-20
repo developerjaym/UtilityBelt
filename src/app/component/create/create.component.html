@@ -15,7 +15,7 @@
   <textarea class="json-viewer" *ngIf="viewJson">{{form.value | json}}</textarea>
 </div>
 
-<div class="create-form" [formGroup]="form">
+<div class="create-form card" [formGroup]="form">
   <h2>Metadata</h2>
   <label class="create-form__label">Title
     <input type="text" formControlName="title" />
@@ -46,7 +46,7 @@
         <button class="create-form__button" (click)="removeInput(i)">Remove input</button>
       </div>
     </div>
-    <button class="create-form__button" (click)="addInput()">+ Add another input</button>
+    <button class="create-form__button" (click)="addInput()">Add another input</button>
   </ng-container>
   <h2>Function</h2>
   <label  class="create-form__label">Function (log, print, paramArray) => {{ '{...}' }}

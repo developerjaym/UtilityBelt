@@ -1,18 +1,3 @@
-.create-form {
-  border-style: solid;
-  border-width: var(--border-width-thin);
-  border-radius: var(--border-radius);
-  border-color: var(--main-fg-color);
-
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  row-gap: var(--margin-narrow);
-
-  padding: var(--padding-thick);
-  margin: var(--margin-thick);
-}
-
 .function-place {
   width: 100%;
   height: 50vh;

@@ -1,16 +1,3 @@
-.function-item {
-  border-style: solid;
-  border-width: var(--border-width-thin);
-  border-radius: var(--border-radius);
-  border-color: var(--main-fg-color);
-
-  display: flex;
-  flex-direction: column;
-  align-items: var(--flex-align);
-
-  padding: var(--padding-thick);
-  margin: var(--margin-thick);
-}
 .function-item__header {
   display: grid;
   grid-template-areas: "title actions"

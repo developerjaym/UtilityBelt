@@ -61,8 +61,8 @@ export class HtmlBuilderService {
       color: white;
   }
   #executeButton {
-    background-color: rgb(224, 224, 224);
-    color: black;
+    background-color: rgb(5, 99, 60);
+    color: white;
     box-sizing: border-box;
     border-width: 1px;
     border-color: black;

@@ -3,8 +3,8 @@
     Search
     <input (keyup.enter)="search($event)">
   </label>
-  <button class="accent" [routerLink]="'create'">+Create</button>
-  <button class="accent" [routerLink]="'import'">+Import</button>
+  <button [routerLink]="'create'">+Create</button>
+  <button [routerLink]="'import'">+Import</button>
 </app-tool-bar>
 
 <app-custom-function-item *ngFor="let item of customItems$ | async" [item]="item"></app-custom-function-item>

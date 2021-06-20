@@ -9,20 +9,19 @@ export class HtmlBuilderService {
 
   public static ROW_GAP = '4px';
   public static FONT_SIZE = '16px';
-  public static LOGGER_SIZE = '120px';
-  public static INPUT_TEXTAREA_SIZE = '240px';
-  public static INPUT_TEXTAREA_AND_LABEL_SIZE = '264px';
-  public static INPUT_AND_LABEL_SIZE = '46px';
-  public static OUTPUT_SIZE = '240px';
-  public static BUTTON_SIZE = '28px';
-  public static INPUT_SIZE = '28px;'
+  public static INPUT_TEXTAREA_SIZE = '266px';
+  public static INPUT_TEXTAREA_AND_LABEL_SIZE = '285px';
+  public static INPUT_AND_LABEL_SIZE = '63px';
+  public static OUTPUT_SIZE = '250px';
+  public static BUTTON_SIZE = '44px';
+  public static INPUT_SIZE = '44px;'
 
   constructor(private sanitizer: DomSanitizer) { }
 
   buildHtmlFromCustomFunctionItem(item: CustomFunctionItem): SafeHtml {
 
     let inputs = this.generateInput(item.inputs);
-    let button = `<button id="executeButton" onclick="execute()">Execute</button>`;
+    let button = `<button id="executeButton" onclick="execute()">EXECUTE FUNCTION</button>`;
     let logArea = `<textarea class="output logs" readonly id="logArea" placeholder="logs"></textarea>`;
     let resultArea = `<textarea onclick="copyResultsToClipboard()" class="output results" readonly id="resultsArea" placeholder="results"></textarea>`;
     let script = `<script>
@@ -59,16 +58,19 @@ export class HtmlBuilderService {
       margin: 0;
     }
   ::placeholder {
-      color: rgba(244, 244, 244, 1);
+      color: white;
   }
   #executeButton {
-    background-color: rgb(25, 125, 44);
-    color: rgba(244, 244, 244, 1);
+    background-color: rgb(224, 224, 224);
+    color: black;
     box-sizing: border-box;
-    border: none;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
     border-radius: 4px;
     height: ${HtmlBuilderService.BUTTON_SIZE};
     font-size: ${HtmlBuilderService.FONT_SIZE};
+    padding: 12px 24px;
   }
   .item {
     display: flex;
@@ -81,12 +83,19 @@ export class HtmlBuilderService {
     flex-direction: column;
     row-gap: ${HtmlBuilderService.ROW_GAP};
   }
+  .outputs {
+    display: grid;
+    grid-template-columns: min(75%, calc(100% - 100px)) max(25%, 100px);
+  }
   input, select {
     font-size: ${HtmlBuilderService.FONT_SIZE};
     box-sizing: border-box;
     height: ${HtmlBuilderService.INPUT_SIZE};
     border-width: 1px;
     border-radius: 4px;
+  }
+  input, select, .inputs textarea {
+    padding: 12px;
   }
   .inputs textarea {
     height: ${HtmlBuilderService.INPUT_TEXTAREA_SIZE};
@@ -95,14 +104,18 @@ export class HtmlBuilderService {
     border-width: 1px;
     border-radius: 4px;
   }
+  .with-textarea {
+    height: ${HtmlBuilderService.INPUT_TEXTAREA_AND_LABEL_SIZE};
+  }
   .input-label {
     display: flex;
     flex-direction: column;
+    font-weight: bold;
     font-size:  ${HtmlBuilderService.FONT_SIZE};
   }
   .output {
-    background-color: rgb(9, 9, 9);
-    color: rgba(244, 244, 244, 1);
+    background-color: black;
+    color: white;
     font-family: monospace;
     font-size:  ${HtmlBuilderService.FONT_SIZE};
   }
@@ -110,7 +123,7 @@ export class HtmlBuilderService {
     height:  ${HtmlBuilderService.OUTPUT_SIZE};
   }
   .logs {
-    height:  ${HtmlBuilderService.LOGGER_SIZE};
+    height:  ${HtmlBuilderService.OUTPUT_SIZE};
   }
   .inputs input:hover,.inputs  select:hover,.inputs textarea:hover {
     border-width: 1px;
@@ -118,12 +131,10 @@ export class HtmlBuilderService {
     border-style: solid;
   }
   #executeButton:hover {
-    border-width: 1px;
-    border-color: rgb(9, 9, 9);
-    border-style: solid;
+    border-color: #054618;
   }
   </style>`;
-    let combined = `${style} ${script} <div class="item"> ${inputs} ${button} ${logArea} ${resultArea} </div>`;
+    let combined = `${style} ${script} <div class="item"> ${inputs} ${button} <div class="outputs">${resultArea} ${logArea} </div> </div>`;
     return this.sanitizer.bypassSecurityTrustHtml(combined);
   }
 
@@ -132,7 +143,7 @@ export class HtmlBuilderService {
   ): string {
     let inputHtml = `<div class="inputs">`;
     for (let i = 0; i < inputValues.length; i++) {
-      inputHtml += `<label class="input-label">${inputValues[i].label}`;
+      inputHtml += `<label class="input-label with-${inputValues[i].type.toLowerCase()}">${inputValues[i].label}`;
       if (inputValues[i].type === FunctionInputType.YES_NO) {
         inputHtml += `<select id="${i}" value="${
           inputValues[i].value

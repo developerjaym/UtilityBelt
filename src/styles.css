@@ -1,19 +1,27 @@
 /* Root - with Variables */
 
 :root {
-  /*Only for container backgrounds that should match the page background*/
-  --main-bg-color: rgba(244, 244, 244, 1);
-  --main-fg-color: rgb(9, 9, 9);
+  /*Only for containers that should match the page background*/
+  --main-bg-color: rgb(244, 244, 244);
+  --main-fg-color: black;
 
-  /*For control and component backgrounds*/
-  --secondary-bg-color: rgb(9, 9, 9);
-  --secondary-fg-color: rgb(244, 244, 244);
+  /*For banner*/
+  --banner-bg-color: rgb(60, 5, 99);
+  --banner-fg-color: white;
 
-  --accent-bg-color: rgb(25, 125, 44);
-  --accent-fg-color: rgb(244, 244, 244);
+  /*For inputs*/
+  --input-bg-color: white;
+  --input-fg-color: black;
 
-  --danger-bg-color: rgb(125, 25, 44);
-  --danger-fg-color: rgb(244, 244, 244);
+  /*For buttons*/
+  --button-bg-color: rgb(224, 224, 224);
+  --button-fg-color: black;
+
+  --accent-bg-color: white;
+  --accent-fg-color: #054618;
+
+  --danger-bg-color: #78244C;
+  --danger-fg-color: white;
 
   --main-font-size: 16px;
   --code-font-size: 14px;
@@ -56,24 +64,29 @@ div, span {
 .logo svg {
   height: calc(0.5 * var(--svg-dimension));
   width: var(--svg-dimension);
-
-  /* color: white; */
 }
 .logo svg g {
-  fill: var(--secondary-fg-color);
+  fill: var(--banner-fg-color);
 }
-input, select {
+label {
+  font-weight: bold;
+}
+input, select, textarea {
   border-radius: var(--border-radius);
   border-width: var(--border-width-thin);
-  padding: var(--padding-narrow);
+  padding: var(--padding-thick);
+  background-color: var(--input-bg-color);
+  color: var(--input-fg-color);
 }
 button {
-  background-color: var(--main-bg-color);
-  padding: var(--padding-narrow);
+  background-color: var(--button-bg-color);
+  padding: var(--padding-thick) calc(2 * var(--padding-thick));
   border-radius: var(--border-radius);
   border-style: solid;
   border-width: var(--border-width-thin);
+  border-color: var(--button-fg-color);
   height: fit-content;
+  text-transform: uppercase;
 }
 .accent {
   background-color: var(--accent-bg-color);
@@ -97,4 +110,7 @@ h1 {
 
 :disabled {
   opacity: 0.5;
+}
+button:hover {
+  border-color: var(--accent-fg-color);
 }

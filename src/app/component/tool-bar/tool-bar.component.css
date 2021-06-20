@@ -9,8 +9,8 @@
 
   padding: calc(2 * var(--padding-thick)) var(--padding-thick) var(--padding-thick) var(--padding-thick);
 
-  background-color: var(--secondary-bg-color);
-  color: var(--secondary-fg-color);
+  background-color: var(--banner-bg-color);
+  color: var(--banner-fg-color);
 }
 
 .tool-bar__actions {

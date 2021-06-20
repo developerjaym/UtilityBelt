@@ -26,7 +26,7 @@ export class CustomFunctionItemComponent implements OnInit {
 
   calcHeight(): string {
     let heightString = `calc(`;
-    heightString += `${HtmlBuilderService.ROW_GAP} + ${HtmlBuilderService.BUTTON_SIZE} + ${HtmlBuilderService.ROW_GAP} + ${HtmlBuilderService.LOGGER_SIZE} + ${HtmlBuilderService.ROW_GAP} + ${HtmlBuilderService.OUTPUT_SIZE} + ${HtmlBuilderService.ROW_GAP}`;
+    heightString += `${HtmlBuilderService.ROW_GAP} + ${HtmlBuilderService.BUTTON_SIZE} + ${HtmlBuilderService.ROW_GAP} + ${HtmlBuilderService.OUTPUT_SIZE} + ${HtmlBuilderService.ROW_GAP}`;
     for(let i = 0; i < this.item.inputs.length; i++) {
       if(this.item.inputs[i].type === FunctionInputType.TEXTAREA) {
         heightString += ` + ${HtmlBuilderService.INPUT_TEXTAREA_AND_LABEL_SIZE}`;

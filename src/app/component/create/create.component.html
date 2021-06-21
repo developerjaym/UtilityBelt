@@ -1,8 +1,8 @@
 <app-tool-bar>
   <button class="create-form__button accent" (click)="save()" [disabled]="form.invalid" *ngIf="creating && tested">Save</button>
   <button class="create-form__button accent" (click)="update()" [disabled]="form.invalid" *ngIf="!creating && tested">Save changes</button>
-  <button class="create-form__button" (click)="viewJson = !viewJson" [disabled]="form.invalid" *ngIf="!creating">{{viewJson ? 'Stop viewing JSON' : 'View JSON'}}</button>
-  <button class="create-form__button" (click)="test()">{{testing ? 'Stop testing function' : 'Test function'}}</button>
+  <button class="create-form__button" (click)="viewJson = !viewJson; testing = false;" [disabled]="form.invalid" *ngIf="!creating">{{viewJson ? 'Stop viewing JSON' : 'View JSON'}}</button>
+  <button class="create-form__button" (click)="test(); viewJson = false;">{{testing ? 'Stop testing function' : 'Test function'}}</button>
   <button [routerLink]="''">Cancel</button>
   <button class="create-form__button danger" (click)="confirmDelete = true" *ngIf="!confirmDelete && !creating">Delete</button>
   <button class="create-form__button danger" (click)="destroy()" *ngIf="confirmDelete">Confirm Delete</button>
@@ -10,9 +10,8 @@
 
 <app-custom-function-item *ngIf="testing" [item]="form.value" [testing]="true"></app-custom-function-item>
 
-<div class="json-viewer-area">
-
-  <textarea class="json-viewer" *ngIf="viewJson">{{form.value | json}}</textarea>
+<div class="json-viewer-area" *ngIf="viewJson">
+  <textarea class="json-viewer">{{form.value | json}}</textarea>
 </div>
 
 <div class="create-form card" [formGroup]="form">

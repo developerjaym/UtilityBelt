@@ -19,3 +19,18 @@
   column-gap: var(--margin-thick);
   padding-right: var(--padding-thick);
 }
+
+@media only screen and (max-width: 750px) {
+  .tool-bar {
+    flex-direction: column;
+    align-items: var(--flex-row-direction);
+  }
+  .tool-bar__actions {
+    display: flex;
+    flex-direction: column;
+  }
+  .tool-bar__actions {
+    width: 200px;
+    min-width: fit-content;
+  }
+}

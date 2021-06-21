@@ -46,6 +46,11 @@ export class CreateComponent implements OnInit {
         this.creating = true;
       }
     });
+    this.form.valueChanges.subscribe(newValue => {
+      this.tested = false;
+      this.testing = false;
+      this.viewJson = false;
+    });
   }
 
   patchForm(id: string) {

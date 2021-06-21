@@ -1,12 +1,3 @@
-export interface FunctionItem {
-  title: string;
-  subtitle: string;
-  author: string;
-  tags: string;
-  inputs: FunctionInput[];
-  function: (logger: (str: string) => void, output: (str: string) => void) => (arr: any[]) => string;
-}
-
 export interface CustomFunctionItem {
   id?: number;
   title: string;

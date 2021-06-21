@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CustomFunctionItem, FunctionItem } from 'src/app/model/function-item';
+import { CustomFunctionItem } from 'src/app/model/function-item';
 import { CustomFunctionService } from 'src/app/service/custom-function.service';
 
 @Component({

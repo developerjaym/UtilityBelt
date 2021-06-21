@@ -172,7 +172,7 @@ export class HtmlBuilderService {
           'NO' === inputValues[i].value ? "selected" : ""
         }>NO</option></select>`;
       } else if (inputValues[i].type === FunctionInputType.TEXTAREA) {
-        inputHtml += `<textarea spellcheck="false" class="input-textarea" id="${i}" value="${inputValues[i].value}"></textarea>`;
+        inputHtml += `<textarea spellcheck="false" class="input-textarea" id="${i}">${inputValues[i].value}</textarea>`;
       } else if (inputValues[i].type === FunctionInputType.NUMBER) {
         inputHtml += `<input type="number" id="${i}" value="${inputValues[i].value}">`;
       } else if (inputValues[i].type === FunctionInputType.DATE) {

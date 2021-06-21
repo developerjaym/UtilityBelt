@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateComponent } from './component/create/create.component';
 import { CustomFunctionItemComponent } from './component/custom-function-item/custom-function-item.component';
-import { FunctionFormComponent } from './component/function-form/function-form.component';
 import { HomeComponent } from './component/home/home.component';
 import { ImportComponent } from './component/import/import.component';
 import { LogoComponent } from './component/logo/logo.component';
@@ -16,7 +15,6 @@ import { ToolBarComponent } from './component/tool-bar/tool-bar.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    FunctionFormComponent,
     ToolBarComponent,
     LogoComponent,
     CreateComponent,

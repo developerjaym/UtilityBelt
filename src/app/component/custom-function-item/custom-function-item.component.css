@@ -2,10 +2,9 @@
   display: grid;
   grid-template-areas: "title actions"
   "subtitle subtitle"
-  "author author"
   "tags tags";
   width: 100%;
-  row-gap: var(--margin-thick);
+  row-gap: var(--margin-narrow);
   margin-bottom: var(--margin-thick);
 }
 .function-item__header__title {
@@ -22,6 +21,7 @@
 }
 .function-item__header__author {
   grid-area: author;
+  font-weight: normal;
 }
 .function-item__header__actions {
   grid-area: actions;

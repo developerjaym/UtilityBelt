@@ -116,7 +116,7 @@ button {
   font-size: var(--main-font-size);
 }
 h2 {
-  font-size: calc(1.5 * var(--main-font-size));
+  font-size: calc(2 * var(--main-font-size));
 }
 h1 {
   font-size: calc(2 * var(--main-font-size));

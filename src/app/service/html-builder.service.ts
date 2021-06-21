@@ -38,8 +38,27 @@ export class HtmlBuilderService {
     document.getElementById("resultsArea").value += str;
   }
   function execute() {
+    // proxy localStorage
+    const localStorage = {
+      getItem: (key) => window.localStorage.getItem('${item.id}-' + key),
+      setItem: (key, value) => window.localStorage.setItem('${item.id}-' + key, value)
+    }
+
+    // no sessionStorage yet
+    const sessionStorage = {};
+
+    // proxy console
+    const console = {};
+    console.log = log;
+    console.error = (str) => log('ERROR: ' + str);
+    console.info = (str) => log('INFO: ' + str);
+    console.debug = (str) => log('DEBUG: ' + str);
+    console.warn = (str) => log('WARN: ' + str);
+
+    // clear output fields
     document.getElementById("logArea").value = '';
     document.getElementById("resultsArea").value = '';
+
     let paramArray = [];
     let counter = 0;
     while(true) {

@@ -19,5 +19,7 @@ export enum FunctionInputType {
   TEXTFIELD = "TEXTFIELD",
   NUMBER = "NUMBER",
   DATE = "DATE",
+  TIME = "TIME",
+  COLOR = "COLOR",
   YES_NO = "YES_NO"
 }

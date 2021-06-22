@@ -1,7 +1,7 @@
 <app-tool-bar>
   <label>
     Search
-    <input (keyup.enter)="search($event)" />
+    <input type="search" (search)="search($event)" />
   </label>
   <button [routerLink]="'create'">Create</button>
   <button [routerLink]="'import'">Import</button>

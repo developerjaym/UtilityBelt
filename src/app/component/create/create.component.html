@@ -16,7 +16,7 @@
 
 <div class="create-form card" [formGroup]="form">
   <h2>Metadata</h2>
-  <label class="create-form__label">Title
+  <label class="create-form__label">Title*
     <input type="text" formControlName="title" />
   </label>
   <label  class="create-form__label">Subtitle
@@ -31,10 +31,10 @@
     <div class="create-form__inputs" *ngFor="let inputGroup of inputs.controls; let i = index">
       <div class="create-form__input-group" [formGroup]="inputGroup">
         <!-- The repeated input template -->
-        <label  class="create-form__label">Label
+        <label  class="create-form__label">Label*
           <input type="text" formControlName="label" />
         </label>
-        <label  class="create-form__label">Type
+        <label  class="create-form__label">Type*
           <select formControlName="type">
             <option *ngFor="let type of Types" [ngValue]="type">{{type}}</option>
           </select>
@@ -48,7 +48,7 @@
     <button class="create-form__button" (click)="addInput()">Add another input</button>
   </ng-container>
   <h2>Function</h2>
-  <label  class="create-form__label">Function (paramArray, log, print, localStorage) => {{ '{...}' }}
+  <label  class="create-form__label">Function* (paramArray, log, print, localStorage) => {{ '{...}' }}
     <textarea class="create-form__function-input" spellcheck="false" formControlName="function"></textarea>
   </label>
 

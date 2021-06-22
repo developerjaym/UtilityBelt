@@ -17,6 +17,9 @@
   --button-bg-color: rgb(224, 224, 224);
   --button-fg-color: black;
 
+  --button-hover-bg-color: rgb(236, 236, 236);
+  --button-hover-fg-color: black;
+
   --accent-bg-color: rgb(5, 99, 60);
   --accent-fg-color: white;
 
@@ -126,5 +129,17 @@ h1 {
   opacity: 0.5;
 }
 button:hover {
-  border-color: var(--accent-fg-color);
+  border-color: var(--button-hover-fg-color);
+  color: var(--button-hover-fg-color);
+  background-color: var(--button-hover-bg-color);
+}
+button.accent:hover {
+  border-color: var(--accent-bg-color);
+  color: var(--accent-bg-color);
+  background-color: var(--accent-fg-color);
+}
+button.danger:hover {
+  border-color: var(--danger-bg-color);
+  color: var(--danger-bg-color);
+  background-color: var(--danger-fg-color);
 }

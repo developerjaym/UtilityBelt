@@ -150,7 +150,9 @@ export class HtmlBuilderService {
     border-style: solid;
   }
   #executeButton:hover {
-    border-color: #054618;
+    border-color: rgb(5, 99, 60);
+    background-color: white;
+    color: rgb(5, 99, 60);
   }
   </style>`;
     let combined = `${style} ${script} <div class="item"> ${inputs} ${button} <div class="outputs">${resultArea} ${logArea} </div> </div>`;
@@ -173,12 +175,8 @@ export class HtmlBuilderService {
         }>NO</option></select>`;
       } else if (inputValues[i].type === FunctionInputType.TEXTAREA) {
         inputHtml += `<textarea spellcheck="false" class="input-textarea" id="${i}">${inputValues[i].value}</textarea>`;
-      } else if (inputValues[i].type === FunctionInputType.NUMBER) {
-        inputHtml += `<input type="number" id="${i}" value="${inputValues[i].value}">`;
-      } else if (inputValues[i].type === FunctionInputType.DATE) {
-        inputHtml += `<input type="date" id="${i}" value="${inputValues[i].value}">`;
-      } else if (inputValues[i].type === FunctionInputType.TEXTFIELD) {
-        inputHtml += `<input type="text" id="${i}" value="${inputValues[i].value}">`;
+      } else  {
+        inputHtml += `<input type="${inputValues[i].type}" id="${i}" value="${inputValues[i].value}">`;
       }
       inputHtml += `</label>`;
     }

@@ -11,11 +11,13 @@ import { CustomFunctionService } from 'src/app/service/custom-function.service';
 export class HomeComponent implements OnInit {
 
   customItems$: Observable<CustomFunctionItem[]>;
+  lastSearchTerm = '';
 
   constructor(private customFunctionService: CustomFunctionService) { }
 
   ngOnInit(): void {
     this.customItems$ = this.customFunctionService.subscribe();
+    this.lastSearchTerm = this.customFunctionService.getLastSearchTerm();
   }
 
   search(event): void {

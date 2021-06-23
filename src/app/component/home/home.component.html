@@ -1,7 +1,7 @@
 <app-tool-bar>
   <label>
     Search
-    <input type="search" (search)="search($event)" />
+    <input type="search" (search)="search($event)" [value]="lastSearchTerm"/>
   </label>
   <button [routerLink]="'create'">Create</button>
   <button [routerLink]="'import'">Import</button>

@@ -32,7 +32,7 @@ export class CreateComponent implements OnInit {
       subtitle: [''],
       tags: [''],
       author: ['SELF'],
-      function: [`log('hi')`, Validators.required],
+      function: [`log(paramArray)`, Validators.required],
       inputs: this.fb.array([]),
     });
     this.activatedRoute.params.subscribe((map) => {

@@ -32,10 +32,6 @@ export class CustomFunctionService {
     this.save(updatedItem);
   }
 
-  load(): CustomFunctionItem[] {
-    return JSON.parse(localStorage.getItem(CustomFunctionService.CUSTOM_FUNCTION_KEY)) || [];
-  }
-
   get(id: number): CustomFunctionItem {
     return this.customItems.find(item => item.id === id);
   }
@@ -67,5 +63,11 @@ export class CustomFunctionService {
     this.subject.next(matchingItems);
   }
 
+  getLastSearchTerm(): string {
+    return this.lastSearchTerm;
+  }
 
+  private load(): CustomFunctionItem[] {
+    return JSON.parse(localStorage.getItem(CustomFunctionService.CUSTOM_FUNCTION_KEY)) || [];
+  }
 }

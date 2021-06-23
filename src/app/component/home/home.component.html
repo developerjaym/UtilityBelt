@@ -1,13 +1,13 @@
 <app-tool-bar>
   <label>
     Search
-    <input type="search" (search)="search($event)" [value]="lastSearchTerm"/>
+    <input type="search" (search)="search($event)"/>
   </label>
   <button [routerLink]="'create'">Create</button>
   <button [routerLink]="'import'">Import</button>
 </app-tool-bar>
 
 <app-custom-function-item
-  *ngFor="let item of customItems$ | async"
+  *ngFor="let item of customItems"
   [item]="item"
 ></app-custom-function-item>

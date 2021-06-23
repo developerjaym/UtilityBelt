@@ -10,19 +10,16 @@ import { CustomFunctionService } from 'src/app/service/custom-function.service';
 })
 export class HomeComponent implements OnInit {
 
-  customItems$: Observable<CustomFunctionItem[]>;
-  lastSearchTerm = '';
+  customItems: CustomFunctionItem[];
 
   constructor(private customFunctionService: CustomFunctionService) { }
 
   ngOnInit(): void {
-    this.customItems$ = this.customFunctionService.subscribe();
-    this.lastSearchTerm = this.customFunctionService.getLastSearchTerm();
+    this.customItems = this.customFunctionService.search('');
   }
 
   search(event): void {
-    let searchTerm = event.target.value;
-    this.customFunctionService.search(searchTerm);
+    this.customItems = this.customFunctionService.search(event.target.value);
   }
 
 }

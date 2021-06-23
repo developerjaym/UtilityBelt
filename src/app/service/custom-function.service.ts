@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { CustomFunctions } from '../data/custom-functions';
 import { CustomFunctionItem } from '../model/function-item';
 
@@ -8,66 +7,66 @@ import { CustomFunctionItem } from '../model/function-item';
 })
 export class CustomFunctionService {
   static CUSTOM_FUNCTION_KEY = 'custom-functions';
-  customItems = CustomFunctions.items;
-  lastSearchTerm = '';
 
-  private subject: BehaviorSubject<CustomFunctionItem[]> = new BehaviorSubject<
-    CustomFunctionItem[]
-  >(this.customItems);
-
-  constructor() {
-    this.customItems.unshift(...this.load());
-    this.subject.next(this.customItems);
-  }
+  constructor() {}
 
   save(item: CustomFunctionItem): void {
-    this.customItems.unshift(item);
-    localStorage.setItem(CustomFunctionService.CUSTOM_FUNCTION_KEY, JSON.stringify(this.customItems.filter(i => i.author !== 'UtilityBelt')));
-    this.search(this.lastSearchTerm); // Searching like this will restore the home page to its earlier state
+    localStorage.setItem(
+      CustomFunctionService.CUSTOM_FUNCTION_KEY,
+      JSON.stringify([item, ...this.loadFromStorage()])
+    );
   }
 
   update(updatedItem: CustomFunctionItem): void {
-    // Remove the item from the array and then save it back into the array
-    this.customItems = this.customItems.filter(item => item.id !== updatedItem.id);
-    this.save(updatedItem);
+    localStorage.setItem(
+      CustomFunctionService.CUSTOM_FUNCTION_KEY,
+      JSON.stringify(
+        this.loadFromStorage().map((i) =>
+          i.id === updatedItem.id ? updatedItem : i
+        )
+      )
+    );
   }
 
   get(id: number): CustomFunctionItem {
-    return this.customItems.find(item => item.id === id);
+    return [...this.loadFromStorage(), ...CustomFunctions.items].find(
+      (item) => item.id === id
+    );
   }
 
   delete(id: number) {
-    this.customItems = this.customItems.filter(item => item.id !== id);
-    localStorage.setItem(CustomFunctionService.CUSTOM_FUNCTION_KEY, JSON.stringify(this.customItems.filter(i => i.author === 'SELF')));
-    this.search(this.lastSearchTerm); // Searching like this will restore the home page to its earlier state
+    localStorage.setItem(
+      CustomFunctionService.CUSTOM_FUNCTION_KEY,
+      JSON.stringify(this.loadFromStorage().filter((i) => i.id === id))
+    );
   }
 
-  subscribe(): Observable<CustomFunctionItem[]> {
-    return this.subject.asObservable();
+  search(term: string): CustomFunctionItem[] {
+    const splitTerms = term
+      .toUpperCase()
+      .split(',')
+      .map((t) => t.toUpperCase().trim())
+      .filter(Boolean);
+    return [...this.loadFromStorage(), ...CustomFunctions.items].filter(
+      (item) => {
+        return (
+          item.tags
+            .split(',')
+            .map((tag) => tag.trim().toUpperCase())
+            .filter(Boolean)
+            .some((tag) => splitTerms.includes(tag)) ||
+          splitTerms.some((t) => item.title.toUpperCase().includes(t)) ||
+          splitTerms.length === 0
+        );
+      }
+    );
   }
 
-  search(term: string): void {
-    this.lastSearchTerm = term;
-    const splitTerms = term.toUpperCase().split(',').map(t => t.toUpperCase().trim()).filter(Boolean);
-    let matchingItems = this.customItems.filter((item) => {
-      return (
-        item.tags
-          .split(',')
-          .map((tag) => tag.trim().toUpperCase())
-          .filter(Boolean)
-          .some(tag => splitTerms.includes(tag))
-          || splitTerms.some(t => item.title.toUpperCase().includes(t))
-          || splitTerms.length === 0
-      );
-    });
-    this.subject.next(matchingItems);
-  }
-
-  getLastSearchTerm(): string {
-    return this.lastSearchTerm;
-  }
-
-  private load(): CustomFunctionItem[] {
-    return JSON.parse(localStorage.getItem(CustomFunctionService.CUSTOM_FUNCTION_KEY)) || [];
+  private loadFromStorage(): CustomFunctionItem[] {
+    return (
+      JSON.parse(
+        localStorage.getItem(CustomFunctionService.CUSTOM_FUNCTION_KEY)
+      ) || []
+    );
   }
 }

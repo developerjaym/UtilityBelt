@@ -37,7 +37,7 @@ export class CustomFunctionService {
   delete(id: number) {
     localStorage.setItem(
       CustomFunctionService.CUSTOM_FUNCTION_KEY,
-      JSON.stringify(this.loadFromStorage().filter((i) => i.id === id))
+      JSON.stringify(this.loadFromStorage().filter((i) => i.id !== id))
     );
   }
 

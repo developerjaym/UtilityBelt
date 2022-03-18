@@ -2,19 +2,23 @@
 
 :root {
   /*Only for containers that should match the page background*/
-  --main-bg-color: rgb(244, 244, 244);
+  --main-bg-color: white;
   --main-fg-color: black;
 
   /*For banner*/
-  --banner-bg-color: rgb(72, 72, 72);
-  --banner-fg-color: white;
+  --banner-bg-color: rgb(234, 233, 233);
+  --banner-fg-color: black;
+
+  /*For cards*/
+  --card-bg-color: rgb(234, 233, 233);
+  --card-fg-color: black;
 
   /*For inputs*/
   --input-bg-color: white;
   --input-fg-color: black;
 
   /*For buttons*/
-  --button-bg-color: rgb(224, 224, 224);
+  --button-bg-color: white;
   --button-fg-color: black;
 
   --button-hover-bg-color: rgb(236, 236, 236);
@@ -23,23 +27,27 @@
   --accent-bg-color: rgb(5, 99, 60);
   --accent-fg-color: white;
 
+  --active-bg-color: white;
+  --active-fg-color: indigo;
+
   --danger-bg-color: firebrick;
   --danger-fg-color: white;
 
-  --main-font-size: 16px;
-  --code-font-size: 14px;
-  --code-line-height: 16px;
-  --small-font-size: 12px;
+  --main-font-size: 14px;
+  --code-font-size: 12px;
+  --code-line-height: 14px;
+  --small-font-size: 10px;
 
-  --snippet-width: 55vw;
-  --snippet-height: 60vh;
+  --card-min-width: 360px;
+  --card-width: 72vw;
+  --card-max-width: 900px;
 
   --border-radius: 4px;
   --border-width-thin: 1px;
   --border-width-thick: 2px;
 
-  --padding-narrow: 4px;
-  --margin-narrow: 4px;
+  --padding-narrow: 6px;
+  --margin-narrow: 6px;
 
   --padding-thick: 12px;
   --margin-thick: 12px;
@@ -51,9 +59,8 @@
   --reverse-text-align: right;
   --flex-align: flex-start;
   --reverse-flex-align: flex-end;
-  --flex-row-direction: row;
 
-  --svg-dimension: 144px;
+  --svg-dimension: 72px;
 }
 body {
   margin: 0;
@@ -63,6 +70,9 @@ body {
 }
 div, span {
   box-sizing: border-box;
+}
+app-logo {
+  height: calc(0.5 * var(--svg-dimension));
 }
 .logo svg {
   height: calc(0.5 * var(--svg-dimension));
@@ -75,7 +85,10 @@ div, span {
   border-style: solid;
   border-width: var(--border-width-thin);
   border-radius: var(--border-radius);
-  border-color: var(--main-fg-color);
+  border-color: var(--card-fg-color);
+
+  background-color: var(--card-bg-color);
+  color: var(--card-fg-color);
 
   display: flex;
   flex-direction: column;
@@ -83,7 +96,11 @@ div, span {
   row-gap: var(--margin-narrow);
 
   padding: var(--padding-thick);
-  margin: var(--margin-thick);
+  margin: var(--margin-thick) auto;
+
+  width: var(--card-width);
+  max-width: var(--card-max-width);
+  min-width: var(--card-min-width);
 }
 label {
   font-weight: bold;
@@ -91,13 +108,14 @@ label {
 input, select, textarea {
   border-radius: var(--border-radius);
   border-width: var(--border-width-thin);
-  padding: var(--padding-thick);
+  padding: var(--padding-narrow);
   background-color: var(--input-bg-color);
   color: var(--input-fg-color);
 }
 button {
   background-color: var(--button-bg-color);
-  padding: var(--padding-thick) calc(2 * var(--padding-thick));
+  color: var(--button-fg-color);
+  padding: var(--padding-narrow) var(--padding-thick);
   border-radius: var(--border-radius);
   border-style: solid;
   border-width: var(--border-width-thin);
@@ -108,6 +126,7 @@ button {
 .accent {
   background-color: var(--accent-bg-color);
   color: var(--accent-fg-color);
+  border-color: var(--accent-bg-color);
 }
 
 .danger {
@@ -128,18 +147,33 @@ h1 {
 :disabled {
   opacity: 0.5;
 }
-button:hover {
+button:hover:enabled {
   border-color: var(--button-hover-fg-color);
   color: var(--button-hover-fg-color);
   background-color: var(--button-hover-bg-color);
 }
-button.accent:hover {
+button.accent:hover:enabled {
   border-color: var(--accent-bg-color);
   color: var(--accent-bg-color);
   background-color: var(--accent-fg-color);
 }
-button.danger:hover {
+button.danger:hover:enabled {
   border-color: var(--danger-bg-color);
   color: var(--danger-bg-color);
   background-color: var(--danger-fg-color);
+}
+button:active, button.accent:active, button.danger:active {
+  border-color: var(--active-fg-color);
+  background-color: var(--active-bg-color);
+  color: var(--active-fg-color);
+}
+
+@media only screen and (max-width: 560px) {
+  .big-screen-only {
+    display: none;
+  }
+  :root {
+    --margin-narrow: 4px;
+    --margin-thick: 8px;
+  }
 }

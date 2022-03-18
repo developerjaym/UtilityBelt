@@ -1,13 +1,16 @@
 <app-tool-bar>
-  <label>
+  <label class="search-input">
     Search
-    <input type="search" (search)="search($event)"/>
+    <input type="search" list="functions" (focus)="loadDatalist()" (change)="search($event)" id="functionSearch"/>
+    <datalist id="functions">
+      <option *ngFor="let item of dataList" [value]="item">
+    </datalist>
   </label>
-  <button [routerLink]="'create'">Create</button>
-  <button [routerLink]="'import'">Import</button>
+  <button [routerLink]="'create'" class="big-screen-only accent">Create</button>
+  <button [routerLink]="'import'" class="big-screen-only">Import</button>
 </app-tool-bar>
 
-<app-custom-function-item
+  <app-custom-function-item
   *ngFor="let item of customItems"
   [item]="item"
-></app-custom-function-item>
+  ></app-custom-function-item>

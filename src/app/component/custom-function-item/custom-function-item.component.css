@@ -29,7 +29,6 @@
 }
 .function-item__body {
   width: 100%;
-  padding: var(--padding-narrow);
 }
 .function-item__body__inputs {
   margin-bottom: var(--margin-thick);

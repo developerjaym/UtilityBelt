@@ -11,7 +11,7 @@ import { CustomFunctionService } from 'src/app/service/custom-function.service';
 export class HomeComponent implements OnInit {
 
   customItems: CustomFunctionItem[];
-
+  dataList: string[] = [];
   constructor(private customFunctionService: CustomFunctionService) { }
 
   ngOnInit(): void {
@@ -22,4 +22,7 @@ export class HomeComponent implements OnInit {
     this.customItems = this.customFunctionService.search(event.target.value);
   }
 
+  loadDatalist(): void {
+    this.dataList = this.customFunctionService.search('').map(item => item.title);
+  }
 }

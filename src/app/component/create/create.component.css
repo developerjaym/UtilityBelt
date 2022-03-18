@@ -9,11 +9,10 @@
 }
 .create-form__input-group {
   display: flex;
-  flex-direction: var(--flex-row-direction);
+  flex-direction: row;
   column-gap: var(--padding-narrow);
   align-items: flex-end;
 }
-
 
 .create-form__inputs {
   display: flex;

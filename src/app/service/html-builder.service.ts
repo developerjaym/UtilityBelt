@@ -8,13 +8,13 @@ import { CustomFunctionItem, FunctionInputType } from '../model/function-item';
 export class HtmlBuilderService {
 
   public static ROW_GAP = '4px';
-  public static FONT_SIZE = '16px';
+  public static FONT_SIZE = '14px';
   public static INPUT_TEXTAREA_SIZE = '266px';
   public static INPUT_TEXTAREA_AND_LABEL_SIZE = '285px';
-  public static INPUT_AND_LABEL_SIZE = '63px';
+  public static INPUT_AND_LABEL_SIZE = '49px';
   public static OUTPUT_SIZE = '250px';
-  public static BUTTON_SIZE = '44px';
-  public static INPUT_SIZE = '44px;'
+  public static BUTTON_SIZE = '32px';
+  public static INPUT_SIZE = '32px;'
 
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -23,7 +23,7 @@ export class HtmlBuilderService {
     let inputs = this.generateInput(item.inputs);
     let button = `<button id="executeButton" onclick="execute()">EXECUTE FUNCTION</button>`;
     let logArea = `<textarea class="output logs" readonly id="logArea" placeholder="logs"></textarea>`;
-    let resultArea = `<textarea onclick="copyResultsToClipboard()" class="output results" readonly id="resultsArea" placeholder="results"></textarea>`;
+    let resultArea = `<div class="output-area"><button class="copy-button" onclick="copyResultsToClipboard()">COPY</button><textarea class="output results" readonly id="resultsArea" placeholder="results"></textarea></div>`;
     let script = `<script>
     function copyResultsToClipboard() {
       const text = document.getElementById('resultsArea').value;
@@ -79,6 +79,34 @@ export class HtmlBuilderService {
   ::placeholder {
       color: white;
   }
+  .output-area {
+    display: grid;
+    grid-template-areas: 'only';
+  }
+  .copy-button {
+    grid-area: only;
+    width: fit-content;
+    z-index: 2;
+    height: fit-content;
+    place-self: end;
+    align-self: start;
+    padding: 6px 12px;
+    margin-right: 20px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+    color: black;
+  }
+  .copy-button:hover {
+    background-color: rgb(236, 236, 236);
+  }
+  .copy-button:active {
+    border-color: indigo;
+    background-color: white;
+    color: indigo;
+  }
   #executeButton {
     background-color: rgb(5, 99, 60);
     color: white;
@@ -89,7 +117,7 @@ export class HtmlBuilderService {
     border-radius: 4px;
     height: ${HtmlBuilderService.BUTTON_SIZE};
     font-size: ${HtmlBuilderService.FONT_SIZE};
-    padding: 12px 24px;
+    padding: 6px 12px;
   }
   .item {
     display: flex;
@@ -114,7 +142,7 @@ export class HtmlBuilderService {
     border-radius: 4px;
   }
   input, select, .inputs textarea {
-    padding: 12px;
+    padding: 6px;
   }
   .inputs textarea {
     height: ${HtmlBuilderService.INPUT_TEXTAREA_SIZE};
@@ -140,6 +168,7 @@ export class HtmlBuilderService {
   }
   .results {
     height:  ${HtmlBuilderService.OUTPUT_SIZE};
+    grid-area: only;
   }
   .logs {
     height:  ${HtmlBuilderService.OUTPUT_SIZE};
@@ -153,6 +182,11 @@ export class HtmlBuilderService {
     border-color: rgb(5, 99, 60);
     background-color: white;
     color: rgb(5, 99, 60);
+  }
+  #executeButton:active {
+    border-color: indigo;
+    background-color: white;
+    color: indigo;
   }
   </style>`;
     let combined = `${style} ${script} <div class="item"> ${inputs} ${button} <div class="outputs">${resultArea} ${logArea} </div> </div>`;

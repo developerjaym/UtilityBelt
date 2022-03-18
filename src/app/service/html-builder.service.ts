@@ -12,7 +12,7 @@ export class HtmlBuilderService {
   public static INPUT_TEXTAREA_SIZE = '266px';
   public static INPUT_TEXTAREA_AND_LABEL_SIZE = '285px';
   public static INPUT_AND_LABEL_SIZE = '49px';
-  public static OUTPUT_SIZE = '250px';
+  public static OUTPUT_SIZE = '285px';
   public static BUTTON_SIZE = '32px';
   public static INPUT_SIZE = '32px;'
 
@@ -22,8 +22,8 @@ export class HtmlBuilderService {
 
     let inputs = this.generateInput(item.inputs);
     let button = `<button id="executeButton" onclick="execute()">EXECUTE FUNCTION</button>`;
-    let logArea = `<textarea class="output logs" readonly id="logArea" placeholder="logs"></textarea>`;
-    let resultArea = `<div class="output-area"><button class="copy-button" onclick="copyResultsToClipboard()">COPY</button><textarea class="output results" readonly id="resultsArea" placeholder="results"></textarea></div>`;
+    let logArea = `<label class="input-label with-textarea output-area__label" id="logAreaLabel"><span class="output-label__text">Logs</span><textarea class="output logs" readonly id="logArea"></textarea></label>`;
+    let resultArea = `<div class="output-area"><button class="copy-button" onclick="copyResultsToClipboard()">COPY</button><label id="resultsAreaLabel" class="input-label with-textarea output-area__label"><span class="output-label__text">Results</span><textarea class="output results" readonly id="resultsArea"></textarea></label></div>`;
     let script = `<script>
     function copyResultsToClipboard() {
       const text = document.getElementById('resultsArea').value;
@@ -91,7 +91,7 @@ export class HtmlBuilderService {
     place-self: end;
     align-self: start;
     padding: 6px 12px;
-    margin-right: 20px;
+    margin-right: 6px;
     border-radius: 4px;
     border-width: 1px;
     border-style: solid;
@@ -166,9 +166,18 @@ export class HtmlBuilderService {
     font-family: monospace;
     font-size:  ${HtmlBuilderService.FONT_SIZE};
   }
+  #resultsAreaLabel {
+    grid-area: only;
+  }
+  .output-area__label {
+    display: grid;
+    grid-template-rows: ${HtmlBuilderService.BUTTON_SIZE} ${HtmlBuilderService.OUTPUT_SIZE};
+  }
+  .output-label__text {
+    align-self: center;
+  }
   .results {
     height:  ${HtmlBuilderService.OUTPUT_SIZE};
-    grid-area: only;
   }
   .logs {
     height:  ${HtmlBuilderService.OUTPUT_SIZE};

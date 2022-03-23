@@ -108,11 +108,12 @@ export class HtmlBuilderService {
     color: indigo;
   }
   #executeButton {
-    background-color: rgb(5, 99, 60);
+    background-color: #5FA300;
     color: white;
+    text-shadow: 0px 0px 4px black;
     box-sizing: border-box;
     border-width: 1px;
-    border-color: black;
+    border-color: white;
     border-style: solid;
     border-radius: 4px;
     height: ${HtmlBuilderService.BUTTON_SIZE};
@@ -184,18 +185,20 @@ export class HtmlBuilderService {
   }
   .inputs input:hover,.inputs  select:hover,.inputs textarea:hover {
     border-width: 1px;
-    border-color: green;
+    border-color: #5FA300;
     border-style: solid;
   }
   #executeButton:hover {
-    border-color: rgb(5, 99, 60);
+    border-color: #5FA300;
     background-color: white;
-    color: rgb(5, 99, 60);
+    color: #5FA300;
+    text-shadow: none;
   }
   #executeButton:active {
-    border-color: indigo;
+    border-color: #5FA300;
     background-color: white;
-    color: indigo;
+    color: #5FA300;
+    text-shadow: none;
   }
   </style>`;
     let combined = `${style} ${script} <div class="item"> ${inputs} ${button} <div class="outputs">${resultArea} ${logArea} </div> </div>`;

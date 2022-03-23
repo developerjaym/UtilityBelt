@@ -6,11 +6,11 @@
   --main-fg-color: black;
 
   /*For banner*/
-  --banner-bg-color: rgb(234, 233, 233);
+  --banner-bg-color: rgb(244, 243, 243);
   --banner-fg-color: black;
 
   /*For cards*/
-  --card-bg-color: rgb(234, 233, 233);
+  --card-bg-color: rgb(244, 243, 243);
   --card-fg-color: black;
 
   /*For inputs*/
@@ -24,13 +24,13 @@
   --button-hover-bg-color: rgb(236, 236, 236);
   --button-hover-fg-color: black;
 
-  --accent-bg-color: rgb(5, 99, 60);
+  --accent-bg-color: #5FA300;
   --accent-fg-color: white;
 
-  --active-bg-color: white;
-  --active-fg-color: indigo;
+  --active-bg-color: gold;
+  --active-fg-color: black;
 
-  --danger-bg-color: firebrick;
+  --danger-bg-color: #A30E00;
   --danger-fg-color: white;
 
   --main-font-size: 14px;
@@ -60,7 +60,7 @@
   --flex-align: flex-start;
   --reverse-flex-align: flex-end;
 
-  --svg-dimension: 72px;
+  --logo-dimension: 72px;
 }
 body {
   margin: 0;
@@ -72,11 +72,11 @@ div, span {
   box-sizing: border-box;
 }
 app-logo {
-  height: calc(0.5 * var(--svg-dimension));
+  height: calc(0.5 * var(--logo-dimension));
 }
 .logo svg {
-  height: calc(0.5 * var(--svg-dimension));
-  width: var(--svg-dimension);
+  height: calc(0.5 * var(--logo-dimension));
+  width: var(--logo-dimension);
 }
 .logo svg g {
   fill: var(--banner-fg-color);
@@ -126,7 +126,8 @@ button {
 .accent {
   background-color: var(--accent-bg-color);
   color: var(--accent-fg-color);
-  border-color: var(--accent-bg-color);
+  border-color: var(--accent-fg-color);
+  text-shadow: 0px 0px 4px var(--main-fg-color);
 }
 
 .danger {
@@ -151,21 +152,34 @@ button:hover:enabled {
   border-color: var(--button-hover-fg-color);
   color: var(--button-hover-fg-color);
   background-color: var(--button-hover-bg-color);
+  text-shadow: none;
 }
 button.accent:hover:enabled {
   border-color: var(--accent-bg-color);
   color: var(--accent-bg-color);
   background-color: var(--accent-fg-color);
+  text-shadow: none;
 }
 button.danger:hover:enabled {
   border-color: var(--danger-bg-color);
   color: var(--danger-bg-color);
   background-color: var(--danger-fg-color);
 }
-button:active, button.accent:active, button.danger:active {
+button:active {
   border-color: var(--active-fg-color);
   background-color: var(--active-bg-color);
   color: var(--active-fg-color);
+}
+button.accent:active {
+  border-color: var(--accent-bg-color);
+  background-color: var(--main-bg-color);
+  color: var(--accent-bg-color);
+  text-shadow: none;
+}
+button.danger:active {
+  border-color: var(--danger-bg-color);
+  background-color: var(--main-bg-color);
+  color: var(--danger-bg-color);
 }
 
 @media only screen and (max-width: 560px) {

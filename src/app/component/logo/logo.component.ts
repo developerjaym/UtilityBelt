@@ -14,17 +14,17 @@ export class LogoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.svgService
-      .getSvgByName('icon/logo/logo_no_text_black_transparent_512_256')
-      .subscribe((newNode) => {
-        this.element.nativeElement.innerHTML = newNode;
-        this.element.nativeElement.classList.add('logo');
-        this.renderer.setAttribute(this.element.nativeElement, 'role', 'img');
-        this.renderer.setAttribute(
-          this.element.nativeElement,
-          'aria-label',
-          'img'
-        );
-      });
+    // this.svgService
+    //   .getSvgByName('icon/logo/logo_no_text_black_transparent_512_256')
+    //   .subscribe((newNode) => {
+    //     this.element.nativeElement.innerHTML = newNode;
+    //     this.element.nativeElement.classList.add('logo');
+    //     this.renderer.setAttribute(this.element.nativeElement, 'role', 'img');
+    //     this.renderer.setAttribute(
+    //       this.element.nativeElement,
+    //       'aria-label',
+    //       'img'
+    //     );
+    //   });
   }
 }

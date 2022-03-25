@@ -93,6 +93,7 @@ export class CreateComponent implements OnInit {
   test() {
     this.tested = true;
     this.testing = !this.testing;
+    window.scrollTo(0, 0);
   }
 
   destroy() {

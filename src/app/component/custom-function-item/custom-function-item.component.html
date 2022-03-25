@@ -1,4 +1,4 @@
-<div class="function-item card">
+<div [ngClass]="{'function-item': true, 'card': true, 'testing': testing}">
   <div class="function-item__header">
     <h2 class="function-item__header__title">{{ item.title }} <span class="function-item__header__author">by {{ item.author }}</span></h2>
     <span class="function-item__header__subtitle">{{ item.subtitle }}</span>

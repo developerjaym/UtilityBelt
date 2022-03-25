@@ -37,7 +37,7 @@ export class HtmlBuilderService {
   function print(str) {
     document.getElementById("resultsArea").value += str;
   }
-  function execute() {
+  async function execute() {
     // proxy localStorage
     const localStorage = {
       getItem: (key) => window.localStorage.getItem('${item.id}-' + key),

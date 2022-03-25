@@ -129,5 +129,45 @@ export class CustomFunctions {
         },
       ],
     },
+    {
+      title: 'Postal Carrier',
+      subtitle: 'Test your API',
+      tags: 'api, test, rest, post, patch, put, delete, options, get',
+      author: 'UtilityBelt',
+      function:
+        'let url = paramArray[0];\nlet method = paramArray[1];\nlet body = paramArray[2];\nlet authorization = paramArray[3];\nlet contentType = paramArray[4];\nlet accept = paramArray[5];\nlet headers = {\n};\nif(contentType) {\n  headers[\'Content-Type\'] = contentType;\n}\nif(authorization) {\n  headers.Authorization = authorization;\n}\nif(accept) {\n  headers.Accept = accept;\n}\nlet options = {\n  method,\n  headers\n}\nif(body) {\n  options.body = body;\n}\nfetch(url, options).then(response => { \n  log(response.status + ": " + response.statusText);\n  return response.json();\n})\n.then(json => print(JSON.stringify(json, null, 2)), e => log("Oh no! " + e));',
+      inputs: [
+        {
+          label: 'URL',
+          type: FunctionInputType.TEXTFIELD,
+          value: 'https://',
+        },
+        {
+          label: 'Method (GET, PATCH, PUT, POST, DELETE, OPTIONS)',
+          type: FunctionInputType.TEXTFIELD,
+          value: 'GET',
+        },
+        {
+          label: 'Body',
+          type: FunctionInputType.TEXTAREA,
+          value: '',
+        },
+        {
+          label: 'Authorization',
+          type: FunctionInputType.TEXTFIELD,
+          value: '',
+        },
+        {
+          label: 'Content-Type',
+          type: FunctionInputType.TEXTFIELD,
+          value: 'application/json',
+        },
+        {
+          label: 'accept',
+          type: FunctionInputType.TEXTFIELD,
+          value: 'application/json',
+        },
+      ],
+    },
   ];
 }

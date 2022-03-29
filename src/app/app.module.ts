@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { CodeEditorModule } from '@ngstack/code-editor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateComponent } from './component/create/create.component';
@@ -25,7 +26,8 @@ import { ToolBarComponent } from './component/tool-bar/tool-bar.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CodeEditorModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

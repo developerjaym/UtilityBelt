@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CodeModel } from '@ngstack/code-editor';
 import { FunctionInputType } from 'src/app/model/function-item';
 import { CustomFunctionService } from 'src/app/service/custom-function.service';
 
@@ -17,6 +18,21 @@ export class CreateComponent implements OnInit {
   creating = true;
   confirmDelete = false;
   viewJson = false;
+
+  theme = 'vs-dark';
+
+  codeModel: CodeModel = {
+    language: 'javascript',
+    uri: 'main.js',
+    value: 'log(paramArray)',
+  };
+
+  options = {
+    contextmenu: false,
+    minimap: {
+      enabled: false,
+    },
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -55,6 +71,7 @@ export class CreateComponent implements OnInit {
 
   patchForm(id: string) {
     let item = this.customFunctionService.get(Number(id));
+    this.codeModel.value = item.function;
     this.form.patchValue(item);
     for (let i = 0; i < item.inputs.length; i++) {
       this.addInput();
@@ -64,6 +81,10 @@ export class CreateComponent implements OnInit {
 
   get inputs() {
     return this.form.get('inputs') as FormArray;
+  }
+
+  onCodeChanged(event): void {
+    this.form.get('function').patchValue(event);
   }
 
   addInput() {

@@ -26,16 +26,12 @@
 .function-item__header__actions {
   grid-area: actions;
   justify-self: var(--reverse-flex-align);
+
+  display: flex;
+  column-gap: var(--margin-narrow);
 }
 .function-item__body {
   width: 100%;
-}
-.function-item__body__inputs {
-  margin-bottom: var(--margin-thick);
-}
-.function-item__body__inputs__label {
-  display: flex;
-  flex-direction: column;
 }
 .function-item__body__iframe {
   width: 100%;
@@ -45,4 +41,6 @@
   border-width: var(--border-width-thick);
   border-color: var(--accent-bg-color);
   border-style: dashed;
+
+  max-width: 100%;
 }

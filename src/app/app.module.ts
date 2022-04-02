@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,8 @@ import { HomeComponent } from './component/home/home.component';
 import { ImportComponent } from './component/import/import.component';
 import { LogoComponent } from './component/logo/logo.component';
 import { ToolBarComponent } from './component/tool-bar/tool-bar.component';
+import { ImportHelperComponent } from './component/import-helper/import-helper.component';
+import { ExportLinkComponent } from './component/export-link/export-link.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,14 @@ import { ToolBarComponent } from './component/tool-bar/tool-bar.component';
     LogoComponent,
     CreateComponent,
     CustomFunctionItemComponent,
-    ImportComponent
+    ImportComponent,
+    ImportHelperComponent,
+    ExportLinkComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     CodeEditorModule.forRoot()

@@ -121,6 +121,7 @@ button {
   border-width: var(--border-width-thin);
   border-color: var(--button-fg-color);
   height: fit-content;
+  width: fit-content;
   text-transform: uppercase;
 }
 .accent {
@@ -166,20 +167,20 @@ button.danger:hover:enabled {
   background-color: var(--danger-fg-color);
 }
 button:active {
-  border-color: var(--active-fg-color);
-  background-color: var(--active-bg-color);
-  color: var(--active-fg-color);
+  border-color: var(--active-fg-color) !important;
+  background-color: var(--active-bg-color) !important;
+  color: var(--active-fg-color) !important;
 }
 button.accent:active {
-  border-color: var(--accent-bg-color);
-  background-color: var(--main-bg-color);
-  color: var(--accent-bg-color);
-  text-shadow: none;
+  border-color: var(--accent-bg-color) !important;
+  background-color: var(--main-bg-color) !important;
+  color: var(--accent-bg-color) !important;
+  text-shadow: none !important;
 }
 button.danger:active {
-  border-color: var(--danger-bg-color);
-  background-color: var(--main-bg-color);
-  color: var(--danger-bg-color);
+  border-color: var(--danger-bg-color) !important;
+  background-color: var(--main-bg-color) !important;
+  color: var(--danger-bg-color) !important;
 }
 
 @media only screen and (max-width: 560px) {

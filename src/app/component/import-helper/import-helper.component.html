@@ -1,0 +1,40 @@
+<app-tool-bar>
+  <button class="import-form__button accent" (click)="save()">Save</button>
+  <button [routerLink]="''">Cancel</button>
+</app-tool-bar>
+
+
+<div class="import-form card">
+  <h2>Import Custom Functions</h2>
+  <label  class="import-form__label">Custom functions to import (ONLY IMPORT FROM PEOPLE YOU TRUST COMPLETELY!!!)
+    <div *ngFor="let item of newItems">
+      <div class="import-form-table">
+        <div class="import-form-table__row import-form-table__row--header sticky">
+          <span class="import-form-table__cell import-form-table__cell--header">
+
+          </span>
+          <span class="import-form-table__cell import-form-table__cell--header">Title</span>
+          <span class="import-form-table__cell import-form-table__cell--header">Tags</span>
+          <span class="import-form-table__cell import-form-table__cell--header import-form-table__cell--action"></span>
+        </div>
+        <div *ngFor="let newItem of newItems; let i = index" class="import-form-table__row">
+          <span class="import-form-table__cell">
+            <input type="checkbox" class="checkbox" [(ngModel)]="newItem.checked" >
+          </span>
+          <span class="import-form-table__cell">{{newItem.item.title}}</span>
+          <span class="import-form-table__cell">{{newItem.item.tags}}</span>
+          <span class="import-form-table__cell import-form-table__cell--action">
+
+            <button *ngIf="!newItem.expanded" (click)="newItem.expanded = true"
+           >Expand</button>
+            <button *ngIf="newItem.expanded" (click)="newItem.expanded = false">Collapse</button>
+          </span>
+          <app-custom-function-item *ngIf="newItem.expanded" class="import-form-table__expansion" [item]="item.item" [testing]="true"></app-custom-function-item>
+        </div>
+      </div>
+
+
+    </div>
+  </label>
+
+</div>

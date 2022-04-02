@@ -17,7 +17,6 @@ export class CreateComponent implements OnInit {
   testing = false;
   creating = true;
   confirmDelete = false;
-  viewJson = false;
 
   theme = 'vs-dark';
 
@@ -62,10 +61,9 @@ export class CreateComponent implements OnInit {
         this.creating = true;
       }
     });
-    this.form.valueChanges.subscribe(newValue => {
+    this.form.valueChanges.subscribe((newValue) => {
       this.tested = false;
       this.testing = false;
-      this.viewJson = false;
     });
   }
 

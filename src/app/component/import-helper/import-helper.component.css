@@ -1,0 +1,36 @@
+.import-form-table__expansion {
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+.import-form-table__row {
+  display: grid;
+  grid-template-columns: calc((2 * var(--main-font-size)) + (4 * var(--padding-narrow))) 1fr 1fr calc((6 * var(--main-font-size)) + (4 * var(--padding-narrow)));
+  min-height: calc((2 * var(--main-font-size)) + (4 * var(--padding-narrow)));
+  box-sizing: border-box;
+}
+
+.import-form-table__cell {
+  border-width: var(--border-width-thin);
+  border-color: var(--main-fg-color);
+  border-style: solid;
+  padding: var(--padding-narrow);
+
+  display: flex;
+  align-items: center;
+}
+
+.import-form-table__cell--header {
+  font-weight: bold;
+  background-color: var(--main-bg-color);
+  color: var(--main-fg-color);
+}
+
+.import-form-table__cell--action {
+  border: none;
+  background-color: transparent;
+}
+
+app-form-box {
+  place-self: center;
+}

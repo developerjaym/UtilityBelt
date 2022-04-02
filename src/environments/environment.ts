@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: "http://localhost:4200/",
+  serverUrl: "https://jayman-gameserver.herokuapp.com/"
 };
 
 /*

@@ -3,7 +3,7 @@
 
   display: flex;
   flex-direction: row;
-  column-gap: var(--margin-thick);
+  column-gap: var(--margin-narrow);
   justify-content: space-between;
   align-items: center;
 
@@ -23,6 +23,6 @@
 .tool-bar__actions {
   display: flex;
   flex-direction: row;
-  column-gap: var(--margin-thick);
+  column-gap: var(--margin-narrow);
   align-items: center;
 }

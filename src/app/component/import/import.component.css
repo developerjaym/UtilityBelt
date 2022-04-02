@@ -1,7 +1,3 @@
-.import-form__button {
-  width: fit-content;
-}
-
 .import-form__label {
   display: flex;
   flex-direction: column;

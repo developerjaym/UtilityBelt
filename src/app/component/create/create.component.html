@@ -15,15 +15,7 @@
   >
     Save changes
   </button>
-  <button
-    class="create-form__button"
-    (click)="viewJson = !viewJson; testing = false"
-    [disabled]="form.invalid"
-    *ngIf="!creating"
-  >
-    {{ viewJson ? "Stop viewing JSON" : "View JSON" }}
-  </button>
-  <button class="create-form__button" (click)="test(); viewJson = false">
+  <button class="create-form__button" (click)="test()">
     {{ testing ? "Stop testing function" : "Test function" }}
   </button>
   <button [routerLink]="''">Cancel</button>
@@ -48,10 +40,6 @@
   [item]="form.value"
   [testing]="true"
 ></app-custom-function-item>
-
-<div class="json-viewer-area" *ngIf="viewJson">
-  <textarea class="json-viewer">{{ form.value | json }}</textarea>
-</div>
 
 <div class="create-form card" [formGroup]="form">
   <h2>Metadata</h2>

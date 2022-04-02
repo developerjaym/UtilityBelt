@@ -20,22 +20,13 @@
   flex-direction: column;
   row-gap: var(--margin-narrow);
 }
-.create-form__button {
-  width: fit-content;
-}
 
 .create-form__function-input {
   font-family: monospace;
   height: 36vh;
 }
-.json-viewer-area {
-  width: 100%;
-  padding: var(--padding-thick);
-  box-sizing: border-box;
-}
-.json-viewer {
+.link-viewer {
   width: 100%;
   box-sizing: border-box;
   font-family: monospace;
-  height: 36vh;
 }

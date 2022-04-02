@@ -1,0 +1,27 @@
+.export-form__label {
+  display: flex;
+  flex-direction: column;
+}
+
+.export-form {
+  display: grid;
+  grid-template-areas: "only";
+}
+
+.export-form__copy-button {
+  grid-area: only;
+  z-index: 2;
+  place-self: end;
+  align-self: start;
+}
+
+.export-form__label {
+  grid-area: only;
+
+  display: grid;
+  grid-template-rows: 32px 32px;
+}
+
+.export-form__label__text {
+  align-self: center;
+}

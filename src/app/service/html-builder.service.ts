@@ -103,9 +103,9 @@ export class HtmlBuilderService {
     background-color: rgb(236, 236, 236);
   }
   .copy-button:active {
-    border-color: indigo;
-    background-color: white;
-    color: indigo;
+    border-color: black !important;
+    background-color: gold !important;
+    color: black !important;
   }
   #executeButton {
     background-color: #5FA300;
@@ -195,10 +195,10 @@ export class HtmlBuilderService {
     text-shadow: none;
   }
   #executeButton:active {
-    border-color: #5FA300;
-    background-color: white;
-    color: #5FA300;
-    text-shadow: none;
+    border-color: black !important;
+    background-color: gold !important;
+    color: black !important;
+    text-shadow: none !important;
   }
   </style>`;
     let combined = `${style} ${script} <div class="item"> ${inputs} ${button} <div class="outputs">${resultArea} ${logArea} </div> </div>`;

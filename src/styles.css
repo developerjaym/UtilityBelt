@@ -112,6 +112,10 @@ input, select, textarea {
   background-color: var(--input-bg-color);
   color: var(--input-fg-color);
 }
+input.checkbox {
+  width: 100%;
+  height: 100%;
+}
 button {
   background-color: var(--button-bg-color);
   color: var(--button-fg-color);
@@ -170,17 +174,7 @@ button:active {
   border-color: var(--active-fg-color) !important;
   background-color: var(--active-bg-color) !important;
   color: var(--active-fg-color) !important;
-}
-button.accent:active {
-  border-color: var(--accent-bg-color) !important;
-  background-color: var(--main-bg-color) !important;
-  color: var(--accent-bg-color) !important;
   text-shadow: none !important;
-}
-button.danger:active {
-  border-color: var(--danger-bg-color) !important;
-  background-color: var(--main-bg-color) !important;
-  color: var(--danger-bg-color) !important;
 }
 
 @media only screen and (max-width: 560px) {

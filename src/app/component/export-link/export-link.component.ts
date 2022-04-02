@@ -10,7 +10,7 @@ import { RemoteImportService } from 'src/app/service/remote-import.service';
   styleUrls: ['./export-link.component.css'],
 })
 export class ExportLinkComponent implements OnInit {
-  link = '';
+  link = 'Loading...';
   constructor(
     private exportService: RemoteImportService,
     private activatedRoute: ActivatedRoute,

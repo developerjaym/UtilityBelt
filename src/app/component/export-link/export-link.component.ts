@@ -11,6 +11,7 @@ import { RemoteImportService } from 'src/app/service/remote-import.service';
 })
 export class ExportLinkComponent implements OnInit {
   link = 'Loading...';
+  loading = true;
   constructor(
     private exportService: RemoteImportService,
     private activatedRoute: ActivatedRoute,
@@ -24,7 +25,10 @@ export class ExportLinkComponent implements OnInit {
         const item = this.customFunctionService.get(Number(map.id));
         this.exportService
           .exportToServer(JSON.stringify([item], null, 2))
-          .subscribe((link) => (this.link = link));
+          .subscribe((link) => {
+            this.link = link;
+            this.loading = false;
+          });
       }
     });
   }

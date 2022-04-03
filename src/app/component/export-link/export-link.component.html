@@ -4,7 +4,7 @@
 <div class="card">
   <h2>Export Custom Function</h2>
   <div class="export-form">
-    <button class="export-form__copy-button" (click)="copy()">Copy</button>
+    <button class="export-form__copy-button" (click)="copy()" [disabled]="loading">Copy</button>
     <label class="export-form__label"
       ><span class="export-form__label__text" >Share this link</span>
       <textarea class="link-viewer" readonly>{{ link }}</textarea>

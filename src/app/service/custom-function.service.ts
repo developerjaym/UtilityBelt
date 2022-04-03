@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CustomFunctions } from '../data/custom-functions';
 import { CustomFunctionItem } from '../model/function-item';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,13 +9,14 @@ import { CustomFunctionItem } from '../model/function-item';
 export class CustomFunctionService {
   static CUSTOM_FUNCTION_KEY = 'custom-functions';
 
-  constructor() {}
+  constructor(private toastService: ToastService) {}
 
   save(item: CustomFunctionItem): void {
     localStorage.setItem(
       CustomFunctionService.CUSTOM_FUNCTION_KEY,
       JSON.stringify([item, ...this.loadFromStorage()])
     );
+    this.toastService.push({message: "SAVED", mood: "happy"});
   }
 
   update(updatedItem: CustomFunctionItem): void {
@@ -26,6 +28,7 @@ export class CustomFunctionService {
         )
       )
     );
+    this.toastService.push({message: "SAVED", mood: "happy"});
   }
 
   get(id: number): CustomFunctionItem {
@@ -39,6 +42,7 @@ export class CustomFunctionService {
       CustomFunctionService.CUSTOM_FUNCTION_KEY,
       JSON.stringify(this.loadFromStorage().filter((i) => i.id !== id))
     );
+    this.toastService.push({message: "DELETED", mood: "sad"});
   }
 
   search(term: string): CustomFunctionItem[] {

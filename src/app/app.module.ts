@@ -13,6 +13,7 @@ import { LogoComponent } from './component/logo/logo.component';
 import { ToolBarComponent } from './component/tool-bar/tool-bar.component';
 import { ImportHelperComponent } from './component/import-helper/import-helper.component';
 import { ExportLinkComponent } from './component/export-link/export-link.component';
+import { ToastComponent } from './component/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ExportLinkComponent } from './component/export-link/export-link.compone
     CustomFunctionItemComponent,
     ImportComponent,
     ImportHelperComponent,
-    ExportLinkComponent
+    ExportLinkComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

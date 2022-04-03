@@ -2,8 +2,10 @@
 
 :root {
   /*Only for containers that should match the page background*/
-  --main-bg-color: white;
-  --main-fg-color: black;
+  --main-bg-color-values: 255 255 255;
+  --main-fg-color-values: 0 0 0;
+  --main-bg-color: rgb(var(--main-bg-color-values));
+  --main-fg-color: rgb(var(--main-fg-color-values));
 
   /*For banner*/
   --banner-bg-color: rgb(244, 243, 243);
@@ -16,6 +18,8 @@
   /*For inputs*/
   --input-bg-color: white;
   --input-fg-color: black;
+
+  --translucent: 85%;
 
   /*For buttons*/
   --button-bg-color: white;

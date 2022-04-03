@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'create', component: CreateComponent  },
     { path: 'import/:conversationId', component: ImportHelperComponent  },
     { path: 'import', component: ImportComponent  },
-    { path: 'export/:id', component: ExportLinkComponent  },
+    { path: 'share/:id', component: ExportLinkComponent  },
     { path: 'edit/:id', component: CreateComponent  },
     { path: '**', redirectTo: 'home' }
 ];

@@ -14,6 +14,7 @@ import { ToolBarComponent } from './component/tool-bar/tool-bar.component';
 import { ImportHelperComponent } from './component/import-helper/import-helper.component';
 import { ExportLinkComponent } from './component/export-link/export-link.component';
 import { ToastComponent } from './component/toast/toast.component';
+import { ModalComponent } from './component/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ToastComponent } from './component/toast/toast.component';
     ImportComponent,
     ImportHelperComponent,
     ExportLinkComponent,
-    ToastComponent
+    ToastComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

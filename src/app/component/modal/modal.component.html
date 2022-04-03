@@ -1,0 +1,10 @@
+<div class="modal-bg">
+  <div class="card modal">
+    <div class="modal__title">
+      <app-logo class="modal__title__logo"></app-logo>
+      <h3 class="modal__title__text">{{title}}</h3>
+      <button class="modal__title__button" (click)="close()">X</button>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</div>

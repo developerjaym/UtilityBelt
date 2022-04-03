@@ -9,7 +9,7 @@
     >
     <div class="function-item__header__actions">
       <button *ngIf="item.author !== 'UtilityBelt' && !testing" [routerLink]="['edit', item.id]">Edit</button>
-      <button *ngIf="item.author !== 'UtilityBelt' && !testing" [routerLink]="['export', item.id]">Export</button>
+      <button *ngIf="item.author !== 'UtilityBelt' && !testing" [routerLink]="['share', item.id]">Share</button>
     </div>
   </div>
   <div class="function-item__body">

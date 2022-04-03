@@ -1,12 +1,13 @@
 .toast {
   height: 100%;
-  background-color: rgb(var(--main-fg-color-values) / var(--translucent));
-  color: var(--main-bg-color);
+  background-color: var(--active-bg-color);
+  color: var(--active-fg-color);
   text-transform: uppercase;
   padding: var(--padding-narrow);
   text-align: center;
+}
 
-  border-width: var(--border-width-thin);
-  border-style: solid;
-  border-color: var(--main-fg-color);
+.sad {
+  background-color: var(--danger-bg-color);
+  color: var(--danger-fg-color);
 }

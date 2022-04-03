@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { CustomFunctionItem } from 'src/app/model/function-item';
 import { CustomFunctionService } from 'src/app/service/custom-function.service';
 
@@ -9,7 +8,7 @@ import { CustomFunctionService } from 'src/app/service/custom-function.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  modalVisible = false;
   customItems: CustomFunctionItem[];
   dataList: string[] = [];
   constructor(private customFunctionService: CustomFunctionService) { }

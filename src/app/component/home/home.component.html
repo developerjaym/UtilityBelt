@@ -1,15 +1,42 @@
 <app-tool-bar>
   <label class="search-input">
     Search
-    <input type="search" list="functions" (focus)="loadDatalist()" (change)="search($event)" id="functionSearch"/>
+    <input
+      type="search"
+      list="functions"
+      (focus)="loadDatalist()"
+      (change)="search($event)"
+      id="functionSearch"
+    />
     <datalist id="functions">
-      <option *ngFor="let item of dataList" [value]="item">
+      <option *ngFor="let item of dataList" [value]="item"></option>
     </datalist>
   </label>
   <button [routerLink]="'create'" class="big-screen-only accent">Create</button>
+  <button (click)="modalVisible = true">?</button>
 </app-tool-bar>
 
-  <app-custom-function-item
+<app-custom-function-item
   *ngFor="let item of customItems"
   [item]="item"
-  ></app-custom-function-item>
+></app-custom-function-item>
+
+<app-modal
+  *ngIf="modalVisible"
+  [title]="'UtilityBelt'"
+  (onClose)="modalVisible = false"
+>
+  <h3>Overview</h3>
+  <p>Search through, run, create, and share forms and functions.</p>
+  <h3>Example Problem</h3>
+  <p>I often need to generate a sample work order JSON payload.</p>
+  <h3>How to Solve with UtilityBelt</h3>
+  <p>
+    I hit 'CREATE'. I give my custom form a name, subtitle, and tags (for
+    searching). I then define the inputs for my custom form: customer number,
+    work order type, and priority. I then write the function that takes those
+    three inputs' values and turns them into a valid JSON payload. I then test
+    my function and hit 'SAVE' when it works. My custom function is now in
+    localStorage, and I can easily search for it in the future.
+  </p>
+</app-modal>

@@ -11,6 +11,19 @@ import { CustomFunctionService } from 'src/app/service/custom-function.service';
   styleUrls: ['./create.component.css'],
 })
 export class CreateComponent implements OnInit {
+  private static DEFAULT_FUNCTION = `// paramArray is an array containing the values from the form
+// in the default example, date of birth is the first parameter
+let dob = paramArray[0];
+try{
+  let differenceInDays = Math.floor((new Date() - new Date(dob)) / 1000 / 60 / 60 / 24);
+  // output the function results on the left side of the output pane
+  // the user can copy this output to their clipboard
+  print("You were born " + differenceInDays + " days ago");
+  // log(string) will output the given string on the right side of the output pane
+  log("SUCCESS");
+} catch(e) { log(e); }
+`;
+
   form: FormGroup;
   Types = Object.keys(FunctionInputType);
   tested = false;
@@ -23,7 +36,7 @@ export class CreateComponent implements OnInit {
   codeModel: CodeModel = {
     language: 'javascript',
     uri: 'main.js',
-    value: 'log(paramArray)',
+    value: ``,
   };
 
   options = {
@@ -47,7 +60,7 @@ export class CreateComponent implements OnInit {
       subtitle: [''],
       tags: [''],
       author: ['SELF'],
-      function: [`log(paramArray)`, Validators.required],
+      function: ['', Validators.required],
       inputs: this.fb.array([]),
     });
     this.activatedRoute.params.subscribe((map) => {
@@ -57,6 +70,9 @@ export class CreateComponent implements OnInit {
         this.creating = false;
       } else {
         // Creating... prepare an input form group
+        this.form.patchValue({ function: CreateComponent.DEFAULT_FUNCTION });
+        this.codeModel.value = CreateComponent.DEFAULT_FUNCTION;
+
         this.addInput();
         this.creating = true;
       }
@@ -88,8 +104,8 @@ export class CreateComponent implements OnInit {
   addInput() {
     this.inputs.push(
       this.fb.group({
-        label: ['', Validators.required],
-        type: ['', Validators.required],
+        label: ['Date of Birth', Validators.required],
+        type: [FunctionInputType.DATE, Validators.required],
         value: [''],
       })
     );

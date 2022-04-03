@@ -19,7 +19,9 @@
   --input-bg-color: white;
   --input-fg-color: black;
 
-  --translucent: 85%;
+  --translucent: 25%;
+  --modal-z: 2;
+  --toast-z: 3;
 
   /*For buttons*/
   --button-bg-color: white;
@@ -152,6 +154,10 @@ h2 {
 }
 h1 {
   font-size: calc(2 * var(--main-font-size));
+}
+
+h1, h2, h3, p {
+  margin: var(--margin-narrow) 0;
 }
 
 :disabled {

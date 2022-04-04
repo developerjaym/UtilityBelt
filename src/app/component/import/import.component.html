@@ -1,7 +1,7 @@
 <app-tool-bar>
   <button class="import-form__button accent" (click)="save()" [disabled]="form.invalid" *ngIf="tested">Save</button>
   <button [ngClass]="{'import-form__button': true, 'accent': !testing}" (click)="testing = !testing; tested = true">{{testing ? 'Stop testing function' : 'Test function'}}</button>
-  <button [routerLink]="''">Cancel</button>
+  <button [routerLink]="''"><app-icon icon="cancel"></app-icon>Cancel</button>
 </app-tool-bar>
 
 <app-custom-function-item *ngIf="testing" [item]="getValue()" [testing]="true"></app-custom-function-item>

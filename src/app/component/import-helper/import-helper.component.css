@@ -5,7 +5,7 @@
 
 .import-form-table__row {
   display: grid;
-  grid-template-columns: calc((2 * var(--main-font-size)) + (4 * var(--padding-narrow))) 1fr 1fr calc((6 * var(--main-font-size)) + (4 * var(--padding-narrow)));
+  grid-template-columns: calc((2 * var(--main-font-size)) + (4 * var(--padding-narrow))) 1fr 1fr calc((7 * var(--main-font-size)) + (4 * var(--padding-narrow)));
   min-height: calc((2 * var(--main-font-size)) + (4 * var(--padding-narrow)));
   box-sizing: border-box;
 }

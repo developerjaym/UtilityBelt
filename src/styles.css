@@ -124,6 +124,9 @@ input.checkbox {
   height: 100%;
 }
 button {
+  display: flex;
+  column-gap: var(--margin-narrow);
+
   background-color: var(--button-bg-color);
   color: var(--button-fg-color);
   padding: var(--padding-narrow) var(--padding-thick);
@@ -142,9 +145,22 @@ button {
   text-shadow: 0px 0px 4px var(--main-fg-color);
 }
 
+.icon svg, .icon {
+  height: var(--main-font-size);
+  width: var(--main-font-size);
+}
+
+.accent svg path {
+  fill: var(--accent-fg-color);
+}
+
 .danger {
   background-color: var(--danger-bg-color);
   color: var(--danger-fg-color);
+}
+
+.danger svg path {
+  fill: var(--danger-fg-color);
 }
 
 * {
@@ -170,16 +186,25 @@ button:hover:enabled {
   background-color: var(--button-hover-bg-color);
   text-shadow: none;
 }
+button:hover:enabled svg path {
+  fill: var(--button-hover-fg-color);
+}
 button.accent:hover:enabled {
   border-color: var(--accent-bg-color);
   color: var(--accent-bg-color);
   background-color: var(--accent-fg-color);
   text-shadow: none;
 }
+button.accent:hover:enabled svg path {
+  fill: var(--accent-bg-color);
+}
 button.danger:hover:enabled {
   border-color: var(--danger-bg-color);
   color: var(--danger-bg-color);
   background-color: var(--danger-fg-color);
+}
+button.danger:hover:enabled svg path {
+  fill: var(--danger-bg-color);
 }
 button:active {
   border-color: var(--active-fg-color) !important;
@@ -188,7 +213,15 @@ button:active {
   text-shadow: none !important;
 }
 
+button:active svg path {
+  fill: var(--active-fg-color) !important;
+}
+
 @media only screen and (max-width: 560px) {
+  button {
+    font-size: 0 !important;
+    column-gap: 0 !important;
+  }
   .big-screen-only {
     display: none;
   }

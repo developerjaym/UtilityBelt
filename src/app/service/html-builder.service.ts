@@ -21,9 +21,10 @@ export class HtmlBuilderService {
   buildHtmlFromCustomFunctionItem(item: CustomFunctionItem): SafeHtml {
 
     let inputs = this.generateInput(item.inputs);
-    let button = `<button id="executeButton" onclick="execute()">EXECUTE FUNCTION</button>`;
+    let button = `<button id="executeButton" onclick="execute()"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="white" d="M3 22v-20l18 10-18 10z"/></svg>EXECUTE FUNCTION</button>`;
     let logArea = `<label class="input-label with-textarea output-area__label" id="logAreaLabel"><span class="output-label__text">Logs</span><textarea class="output logs" readonly id="logArea"></textarea></label>`;
-    let resultArea = `<div class="output-area"><button class="copy-button" onclick="copyResultsToClipboard()">COPY</button><label id="resultsAreaLabel" class="input-label with-textarea output-area__label"><span class="output-label__text">Results</span><textarea class="output results" readonly id="resultsArea"></textarea></label></div>`;
+    let resultArea = `<div class="output-area"><button class="copy-button" onclick="copyResultsToClipboard()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M24 4h-20v20h20v-20zm-24 17v-21h21v2h-19v19h-2z"/></svg>COPY</button><label id="resultsAreaLabel" class="input-label with-textarea output-area__label"><span class="output-label__text">Results</span><textarea class="output results" readonly id="resultsArea"></textarea></label></div>`;
     let script = `<script>
     function copyResultsToClipboard() {
       const text = document.getElementById('resultsArea').value;
@@ -83,6 +84,10 @@ export class HtmlBuilderService {
   .output-area {
     display: grid;
     grid-template-areas: 'only';
+  }
+  svg {
+    margin-right: 4px;
+    transform: translateY(2px);
   }
   .copy-button {
     grid-area: only;
@@ -195,11 +200,17 @@ export class HtmlBuilderService {
     color: #5FA300;
     text-shadow: none;
   }
+  #executeButton:hover svg path {
+    fill: #5FA300;
+  }
   #executeButton:active {
     border-color: black !important;
     background-color: gold !important;
     color: black !important;
     text-shadow: none !important;
+  }
+  #executeButton:active svg path {
+    fill: black !important;
   }
   </style>`;
     let combined = `${style} ${script} <div class="item"> ${inputs} ${button} <div class="outputs">${resultArea} ${logArea} </div> </div>`;

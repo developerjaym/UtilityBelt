@@ -8,8 +8,8 @@
       {{ item.tags | uppercase }}</span
     >
     <div class="function-item__header__actions">
-      <button *ngIf="item.author !== 'UtilityBelt' && !testing" [routerLink]="['edit', item.id]">Edit</button>
-      <button *ngIf="item.author !== 'UtilityBelt' && !testing" [routerLink]="['share', item.id]">Share</button>
+      <button *ngIf="item.author !== 'UtilityBelt' && !testing" [routerLink]="['edit', item.id]"><app-icon icon="edit"></app-icon>Edit</button>
+      <button *ngIf="item.author !== 'UtilityBelt' && !testing" [routerLink]="['share', item.id]"><app-icon icon="share"></app-icon>Share</button>
     </div>
   </div>
   <div class="function-item__body">

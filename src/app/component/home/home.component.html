@@ -12,8 +12,8 @@
       <option *ngFor="let item of dataList" [value]="item"></option>
     </datalist>
   </label>
-  <button [routerLink]="'create'" class="big-screen-only accent">Create</button>
-  <button (click)="modalVisible = true" class="big-screen-only">?</button>
+  <button [routerLink]="'create'" class="big-screen-only accent"><app-icon icon="add"></app-icon>Create</button>
+  <button (click)="modalVisible = true" class="big-screen-only"><app-icon icon="help"></app-icon></button>
 </app-tool-bar>
 
 <app-custom-function-item

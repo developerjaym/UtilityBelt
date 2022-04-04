@@ -1,11 +1,11 @@
 <app-tool-bar>
-  <button [routerLink]="''">Cancel</button>
-  <button (click)="helpModalVisible = true">?</button>
+  <button [routerLink]="''"><app-icon icon="cancel"></app-icon>Cancel</button>
+  <button (click)="helpModalVisible = true"><app-icon icon="help"></app-icon></button>
 </app-tool-bar>
 <div class="card">
   <h2>Share Custom Function</h2>
   <div class="export-form">
-    <button class="export-form__copy-button" (click)="copy()" [disabled]="loading">Copy</button>
+    <button class="export-form__copy-button" (click)="copy()" [disabled]="loading"><app-icon icon="copy"></app-icon>Copy</button>
     <label class="export-form__label"
       ><span class="export-form__label__text" >Share this link</span>
       <textarea class="link-viewer" readonly>{{ link }}</textarea>

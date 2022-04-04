@@ -5,7 +5,7 @@
     [disabled]="form.invalid"
     *ngIf="creating && tested"
   >
-    Save
+    <app-icon icon="save"></app-icon>Save
   </button>
   <button
     class="create-form__button accent"
@@ -13,21 +13,21 @@
     [disabled]="form.invalid"
     *ngIf="!creating && tested"
   >
-    Save changes
+  <app-icon icon="save"></app-icon>Save changes
   </button>
   <button class="create-form__button" (click)="test()">
-    {{ testing ? "Stop testing function" : "Test function" }}
+    <app-icon icon="test"></app-icon>{{ testing ? "Stop testing function" : "Test function" }}
   </button>
-  <button [routerLink]="''">Cancel</button>
+  <button [routerLink]="''"><app-icon icon="cancel"></app-icon>Cancel</button>
   <button
     class="create-form__button danger"
     (click)="confirmDelete = true"
     *ngIf="!creating"
   >
-    Delete
+   <app-icon icon="delete"></app-icon>Delete
   </button>
   <button class="create-form__button" (click)="helpModalVisible = true">
-    ?
+    <app-icon icon="help"></app-icon>
   </button>
 </app-tool-bar>
 
@@ -77,12 +77,12 @@
           <input type="text" formControlName="value" />
         </label>
         <button class="create-form__button danger" (click)="removeInput(i)">
-          Remove input
+          <app-icon icon="delete"></app-icon>Remove input
         </button>
       </div>
     </div>
     <button class="create-form__button" (click)="addInput()">
-      Add another input
+      <app-icon icon="add"></app-icon>Add another input
     </button>
   </ng-container>
   <h2>Function</h2>
@@ -105,7 +105,7 @@
   (onClose)="confirmDelete = false"
 >
   <button class="modal-confirm-delete danger" (click)="destroy()">
-    Confirm Delete
+    <app-icon icon="delete"></app-icon>Confirm Delete
   </button>
 </app-modal>
 

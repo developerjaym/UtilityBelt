@@ -1,7 +1,7 @@
 <app-tool-bar>
-  <button class="import-form__button accent" (click)="save()">Save</button>
-  <button [routerLink]="''">Cancel</button>
-  <button (click)="helpModalVisible = true">?</button>
+  <button class="import-form__button accent" (click)="save()"><app-icon icon="save"></app-icon>Save</button>
+  <button [routerLink]="''"><app-icon icon="cancel"></app-icon>Cancel</button>
+  <button (click)="helpModalVisible = true"><app-icon icon="help"></app-icon></button>
 </app-tool-bar>
 
 <div class="import-form card">
@@ -40,10 +40,10 @@
         <span class="import-form-table__cell">{{ newItem.item.tags }}</span>
         <span class="import-form-table__cell import-form-table__cell--action">
           <button *ngIf="!newItem.expanded" (click)="newItem.expanded = true">
-            Expand
+            <app-icon icon="expand"></app-icon>Expand
           </button>
           <button *ngIf="newItem.expanded" (click)="newItem.expanded = false">
-            Collapse
+            <app-icon icon="collapse"></app-icon>Collapse
           </button>
         </span>
         <label class="import-form-table__expansion" *ngIf="newItem.expanded"

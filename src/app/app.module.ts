@@ -15,6 +15,7 @@ import { ImportHelperComponent } from './component/import-helper/import-helper.c
 import { ExportLinkComponent } from './component/export-link/export-link.component';
 import { ToastComponent } from './component/toast/toast.component';
 import { ModalComponent } from './component/modal/modal.component';
+import { IconComponent } from './component/icon/icon.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ModalComponent } from './component/modal/modal.component';
     ImportHelperComponent,
     ExportLinkComponent,
     ToastComponent,
-    ModalComponent
+    ModalComponent,
+    IconComponent
   ],
   imports: [
     BrowserModule,

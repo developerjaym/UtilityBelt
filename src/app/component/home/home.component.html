@@ -13,7 +13,7 @@
     </datalist>
   </label>
   <button [routerLink]="'create'" class="big-screen-only accent">Create</button>
-  <button (click)="modalVisible = true">?</button>
+  <button (click)="modalVisible = true" class="big-screen-only">?</button>
 </app-tool-bar>
 
 <app-custom-function-item
@@ -36,7 +36,7 @@
     searching). I then define the inputs for my custom form: customer number,
     work order type, and priority. I then write the function that takes those
     three inputs' values and turns them into a valid JSON payload. I then test
-    my function and hit 'SAVE' when it works. My custom function is now in
+    my form and function and hit 'SAVE' when it works. My custom form is now in
     localStorage, and I can easily search for it in the future.
   </p>
 </app-modal>

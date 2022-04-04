@@ -12,6 +12,7 @@ import { RemoteImportService } from 'src/app/service/remote-import.service';
 export class ExportLinkComponent implements OnInit {
   link = 'Loading...';
   loading = true;
+  helpModalVisible = false;
   constructor(
     private exportService: RemoteImportService,
     private activatedRoute: ActivatedRoute,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CodeModel } from '@ngstack/code-editor';
 import { CustomFunctionItem } from 'src/app/model/function-item';
 import { CustomFunctionService } from 'src/app/service/custom-function.service';
 import { RemoteImportService } from 'src/app/service/remote-import.service';
@@ -11,6 +12,16 @@ import { RemoteImportService } from 'src/app/service/remote-import.service';
 })
 export class ImportHelperComponent implements OnInit {
   newItems: ImportItem<CustomFunctionItem>[] = [];
+  helpModalVisible = false;
+  theme = 'vs-dark';
+
+  options = {
+    readonly: true,
+    contextmenu: false,
+    minimap: {
+      enabled: false,
+    },
+  };
   constructor(
     private importService: RemoteImportService,
     private activatedRoute: ActivatedRoute,

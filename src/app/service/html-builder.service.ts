@@ -41,7 +41,8 @@ export class HtmlBuilderService {
     // proxy localStorage
     const localStorage = {
       getItem: (key) => window.localStorage.getItem('${item.id}-' + key),
-      setItem: (key, value) => window.localStorage.setItem('${item.id}-' + key, value)
+      setItem: (key, value) => window.localStorage.setItem('${item.id}-' + key, value),
+      clear: () => {}
     }
 
     // no sessionStorage yet

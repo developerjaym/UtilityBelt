@@ -30,6 +30,7 @@ try{
   testing = false;
   creating = true;
   confirmDelete = false;
+  helpModalVisible = false;
 
   theme = 'vs-dark';
 

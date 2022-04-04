@@ -1,5 +1,6 @@
 <app-tool-bar>
   <button [routerLink]="''">Cancel</button>
+  <button (click)="helpModalVisible = true">?</button>
 </app-tool-bar>
 <div class="card">
   <h2>Share Custom Function</h2>
@@ -11,3 +12,15 @@
     </label>
   </div>
 </div>
+
+
+<app-modal
+  *ngIf="helpModalVisible"
+  [title]="'UtilityBelt'"
+  (onClose)="helpModalVisible = false"
+>
+  <h3>Sharing</h3>
+  <p>
+    Send the generated link to whoever needs it. This link will expire within a couple days.
+  </p>
+</app-modal>

@@ -19,9 +19,10 @@
   --input-bg-color: white;
   --input-fg-color: black;
 
-  --translucent: 25%;
-  --modal-z: 2;
-  --toast-z: 3;
+  --translucent: 33%;
+  --modal-z: 3;
+  --tool-bar-z: 3;
+  --toast-z: 4;
 
   /*For buttons*/
   --button-bg-color: white;

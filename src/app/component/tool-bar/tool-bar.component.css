@@ -30,7 +30,9 @@
 
   grid-area: actions;
 }
-
+.tool-bar {
+  z-index: var(--tool-bar-z);
+}
 app-logo {
   grid-area: logo;
 }

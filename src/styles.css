@@ -109,6 +109,14 @@ app-logo {
   max-width: var(--card-max-width);
   min-width: var(--card-min-width);
 }
+.testing {
+  border-width: var(--border-width-thick);
+  border-color: var(--accent-bg-color);
+  border-style: dashed;
+}
+.card .testing {
+  width: 100%;
+}
 label {
   font-weight: bold;
 }

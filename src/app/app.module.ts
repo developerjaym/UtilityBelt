@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { CreateComponent } from './component/create/create.component';
 import { CustomFunctionItemComponent } from './component/custom-function-item/custom-function-item.component';
 import { HomeComponent } from './component/home/home.component';
-import { ImportComponent } from './component/import/import.component';
 import { LogoComponent } from './component/logo/logo.component';
 import { ToolBarComponent } from './component/tool-bar/tool-bar.component';
 import { ImportHelperComponent } from './component/import-helper/import-helper.component';
@@ -25,7 +24,6 @@ import { IconComponent } from './component/icon/icon.component';
     LogoComponent,
     CreateComponent,
     CustomFunctionItemComponent,
-    ImportComponent,
     ImportHelperComponent,
     ExportLinkComponent,
     ToastComponent,

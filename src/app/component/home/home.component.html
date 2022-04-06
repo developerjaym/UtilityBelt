@@ -12,8 +12,8 @@
       <option *ngFor="let item of dataList" [value]="item"></option>
     </datalist>
   </label>
-  <button [routerLink]="'create'" class="big-screen-only accent"><app-icon icon="add"></app-icon>Create</button>
-  <button (click)="modalVisible = true" class="big-screen-only"><app-icon icon="help"></app-icon></button>
+  <button [routerLink]="'create'" class="big-screen-only accent" title="Create a new custom form"><app-icon icon="add"></app-icon>Create</button>
+  <button (click)="modalVisible = true" class="big-screen-only" title="Learn about UtilityBelt" aria-label="Help" aria-haspopup="dialog"><app-icon icon="help"></app-icon></button>
 </app-tool-bar>
 
 <app-custom-function-item

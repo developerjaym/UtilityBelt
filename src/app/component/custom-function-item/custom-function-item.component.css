@@ -37,10 +37,3 @@
   width: 100%;
   border: none;
 }
-.testing {
-  border-width: var(--border-width-thick);
-  border-color: var(--accent-bg-color);
-  border-style: dashed;
-
-  max-width: 100%;
-}

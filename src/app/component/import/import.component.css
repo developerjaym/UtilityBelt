@@ -1,9 +1,0 @@
-.import-form__label {
-  display: flex;
-  flex-direction: column;
-}
-
-.import-form__json-input {
-  font-family: monospace;
-  height: 36vh;
-}

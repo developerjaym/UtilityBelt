@@ -21,15 +21,15 @@ export class HtmlBuilderService {
   buildHtmlFromCustomFunctionItem(item: CustomFunctionItem): SafeHtml {
 
     let inputs = this.generateInput(item.inputs);
-    let button = `<button id="executeButton" onclick="execute()"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="white" d="M3 22v-20l18 10-18 10z"/></svg>EXECUTE FUNCTION</button>`;
+    let button = `<button title="Execute" id="executeButton" onclick="execute()"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path fill="white" d="M3 22v-20l18 10-18 10z"/></svg>EXECUTE FUNCTION</button>`;
     let logArea = `<label class="input-label with-textarea output-area__label" id="logAreaLabel"><span class="output-label__text">Logs</span><textarea class="output logs" readonly id="logArea"></textarea></label>`;
-    let resultArea = `<div class="output-area"><button class="copy-button" onclick="copyResultsToClipboard()">
+    let resultArea = `<div class="output-area"><button title="Copy the output to your clipboard" class="copy-button" onclick="copyResultsToClipboard()">
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M24 4h-20v20h20v-20zm-24 17v-21h21v2h-19v19h-2z"/></svg>COPY</button><label id="resultsAreaLabel" class="input-label with-textarea output-area__label"><span class="output-label__text">Results</span><textarea class="output results" readonly id="resultsArea"></textarea></label></div>`;
     let script = `<script>
     function copyResultsToClipboard() {
       const text = document.getElementById('resultsArea').value;
       navigator["clipboard"].writeText(text).then(
-        () => log('Copied ' + text + ' to clipboard successfully.'), () => log('Failed to copy to clipboard. Do it yourself.')
+        () => log('COPIED'), () => log('Failed to copy to clipboard. Do it yourself.')
       );
     }
   function log(str) {
@@ -139,7 +139,7 @@ export class HtmlBuilderService {
   }
   .outputs {
     display: grid;
-    grid-template-columns: min(75%, calc(100% - 100px)) max(25%, 100px);
+    grid-template-columns: 3fr 1fr;
   }
   input, select {
     font-size: ${HtmlBuilderService.FONT_SIZE};
@@ -211,6 +211,19 @@ export class HtmlBuilderService {
   }
   #executeButton:active svg path {
     fill: black !important;
+  }
+  @media only screen and (max-width: 378px) {
+    button {
+      font-size: 0 !important;
+      column-gap: 0 !important;
+    }
+    button svg {
+      margin-right: 0 !important;
+      transform: none !important;
+    }
+    .big-screen-only {
+      display: none;
+    }
   }
   </style>`;
     let combined = `${style} ${script} <div class="item"> ${inputs} ${button} <div class="outputs">${resultArea} ${logArea} </div> </div>`;

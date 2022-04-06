@@ -25,3 +25,7 @@
 .export-form__label__text {
   align-self: center;
 }
+
+.link-viewer {
+  resize: none;
+}

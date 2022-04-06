@@ -31,6 +31,7 @@ try{
   creating = true;
   confirmDelete = false;
   helpModalVisible = false;
+  errorModalVisible = false;
 
   theme = 'vs-dark';
 
@@ -86,11 +87,16 @@ try{
 
   patchForm(id: string) {
     let item = this.customFunctionService.get(Number(id));
-    this.codeModel.value = item.function;
-    this.form.patchValue(item);
-    for (let i = 0; i < item.inputs.length; i++) {
-      this.addInput();
-      this.inputs.at(i).patchValue(item.inputs[i]);
+    if(item) {
+      this.codeModel.value = item.function;
+      this.form.patchValue(item);
+      for (let i = 0; i < item.inputs.length; i++) {
+        this.addInput();
+        this.inputs.at(i).patchValue(item.inputs[i]);
+      }
+    }
+    else {
+      this.errorModalVisible =  true;
     }
   }
 
@@ -134,6 +140,10 @@ try{
 
   destroy() {
     this.customFunctionService.delete(this.form.value.id);
+    this.router.navigate(['']);
+  }
+
+  onErrorModalClose(): void {
     this.router.navigate(['']);
   }
 }

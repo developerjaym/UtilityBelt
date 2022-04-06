@@ -3,6 +3,7 @@
     class="create-form__button accent"
     (click)="save()"
     [disabled]="form.invalid"
+    title="Keep this custom form and go back"
     *ngIf="creating && tested"
   >
     <app-icon icon="save"></app-icon>Save
@@ -11,22 +12,24 @@
     class="create-form__button accent"
     (click)="update()"
     [disabled]="form.invalid"
+    title="Keep these changes and go back"
     *ngIf="!creating && tested"
   >
   <app-icon icon="save"></app-icon>Save changes
   </button>
-  <button class="create-form__button" (click)="test()">
-    <app-icon icon="test"></app-icon>{{ testing ? "Stop testing function" : "Test function" }}
+  <button class="create-form__button" (click)="test()" title="Make sure your custom form works">
+    <app-icon icon="test"></app-icon>{{ testing ? "Stop testing form" : "Test form" }}
   </button>
   <button [routerLink]="''"><app-icon icon="cancel"></app-icon>Cancel</button>
   <button
     class="create-form__button danger"
     (click)="confirmDelete = true"
+    title="Delete this custom form"
     *ngIf="!creating"
   >
    <app-icon icon="delete"></app-icon>Delete
   </button>
-  <button class="create-form__button" (click)="helpModalVisible = true">
+  <button aria-label="Help" aria-haspopup="dialog" class="create-form__button" (click)="helpModalVisible = true" title="Learn how to create custom forms">
     <app-icon icon="help"></app-icon>
   </button>
 </app-tool-bar>
@@ -76,12 +79,12 @@
           >Initial value
           <input type="text" formControlName="value" />
         </label>
-        <button class="create-form__button danger" (click)="removeInput(i)">
+        <button class="create-form__button danger" (click)="removeInput(i)" title="Remove this input from your custom form">
           <app-icon icon="delete"></app-icon>Remove input
         </button>
       </div>
     </div>
-    <button class="create-form__button" (click)="addInput()">
+    <button class="create-form__button" (click)="addInput()" title="Add another input to your custom form">
       <app-icon icon="add"></app-icon>Add another input
     </button>
   </ng-container>
@@ -104,8 +107,8 @@
   [title]="'Are you sure?'"
   (onClose)="confirmDelete = false"
 >
-  <button class="modal-confirm-delete danger" (click)="destroy()">
-    <app-icon icon="delete"></app-icon>Confirm Delete
+  <button class="modal-confirm-delete danger" (click)="destroy()" title="Permanently delete this custom form">
+    <app-icon icon="delete"></app-icon>Yes, Delete
   </button>
 </app-modal>
 
@@ -133,5 +136,16 @@
     <code>print</code>, is a function that outputs to the left side of the
     output pane. Use this function to output your results. The fourth,
     <code>localStorage</code>, is a proxy to localStorage. Use it the same way.
+  </p>
+</app-modal>
+
+<app-modal
+  *ngIf="errorModalVisible"
+  [title]="'UtilityBelt'"
+  (onClose)="onErrorModalClose()"
+>
+  <h3>Something Went Wrong</h3>
+  <p>
+    We couldn't find the custom form you're looking for.
   </p>
 </app-modal>

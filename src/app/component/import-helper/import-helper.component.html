@@ -1,7 +1,7 @@
 <app-tool-bar>
-  <button class="import-form__button accent" (click)="save()"><app-icon icon="save"></app-icon>Save</button>
-  <button [routerLink]="''"><app-icon icon="cancel"></app-icon>Cancel</button>
-  <button (click)="helpModalVisible = true"><app-icon icon="help"></app-icon></button>
+  <button class="import-form__button accent" (click)="save()" title="Keep these custom forms and go back"><app-icon icon="save"></app-icon>Save</button>
+  <button [routerLink]="''" title="Go back to the homepage"><app-icon icon="cancel"></app-icon>Cancel</button>
+  <button (click)="helpModalVisible = true" title="Learn about importing custom forms" aria-label="Help" aria-haspopup="dialog"><app-icon aria-hidden="true" icon="help"></app-icon></button>
 </app-tool-bar>
 
 <div class="import-form card">
@@ -39,10 +39,10 @@
         <span class="import-form-table__cell">{{ newItem.item.title }}</span>
         <span class="import-form-table__cell">{{ newItem.item.tags }}</span>
         <span class="import-form-table__cell import-form-table__cell--action">
-          <button *ngIf="!newItem.expanded" (click)="newItem.expanded = true">
+          <button *ngIf="!newItem.expanded" (click)="newItem.expanded = true" title="See more about this custom form">
             <app-icon icon="expand"></app-icon>Expand
           </button>
-          <button *ngIf="newItem.expanded" (click)="newItem.expanded = false">
+          <button *ngIf="newItem.expanded" (click)="newItem.expanded = false" title="See less about this custom form">
             <app-icon icon="collapse"></app-icon>Collapse
           </button>
         </span>
@@ -84,5 +84,16 @@
     sure it's what you want. If you like it, then hit the 'SAVE' button. That
     will save it to localStorage, and it will appear in the list of custom forms
     on the homepage.
+  </p>
+</app-modal>
+
+<app-modal
+  *ngIf="errorModalVisible"
+  [title]="'UtilityBelt'"
+  (onClose)="onErrorModalClose()"
+>
+  <h3>Something Went Wrong</h3>
+  <p>
+    Your import link is probably expired now.
   </p>
 </app-modal>

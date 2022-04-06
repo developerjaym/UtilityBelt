@@ -13,6 +13,7 @@ import { RemoteImportService } from 'src/app/service/remote-import.service';
 export class ImportHelperComponent implements OnInit {
   newItems: ImportItem<CustomFunctionItem>[] = [];
   helpModalVisible = false;
+  errorModalVisible = false;
   theme = 'vs-dark';
 
   options = {
@@ -34,7 +35,7 @@ export class ImportHelperComponent implements OnInit {
 
     this.importService
       .importFromServer(conversationId)
-      .subscribe((toImport) => this.display(toImport));
+      .subscribe((toImport) => this.display(toImport), (err) => this.errorModalVisible = true);
   }
 
   save(): void {
@@ -43,6 +44,10 @@ export class ImportHelperComponent implements OnInit {
       item.item.id = new Date().getTime();
       this.customFunctionService.save(item.item);
     });
+    this.router.navigate(['']);
+  }
+
+  onErrorModalClose(): void {
     this.router.navigate(['']);
   }
 

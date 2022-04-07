@@ -189,11 +189,6 @@ export class HtmlBuilderService {
   .logs {
     height:  ${HtmlBuilderService.OUTPUT_SIZE};
   }
-  .inputs input:hover,.inputs  select:hover,.inputs textarea:hover {
-    border-width: 1px;
-    border-color: #5FA300;
-    border-style: solid;
-  }
   #executeButton:hover {
     border-color: #5FA300;
     background-color: white;
@@ -211,6 +206,10 @@ export class HtmlBuilderService {
   }
   #executeButton:active svg path {
     fill: black !important;
+  }
+  ::selection {
+    background-color: rgb(74, 48, 141);
+    color: white;
   }
   @media only screen and (max-width: 378px) {
     button {

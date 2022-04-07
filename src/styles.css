@@ -34,6 +34,9 @@
   --accent-bg-color: #5FA300;
   --accent-fg-color: white;
 
+  --selection-bg-color: rgb(74, 48, 141);
+  --selection-fg-color: white;
+
   --active-bg-color: gold;
   --active-fg-color: black;
 
@@ -223,6 +226,11 @@ button:active {
 
 button:active svg path {
   fill: var(--active-fg-color) !important;
+}
+
+::selection {
+  background-color: var(--selection-bg-color);
+  color: var(--selection-fg-color);
 }
 
 @media only screen and (max-width: 560px) {

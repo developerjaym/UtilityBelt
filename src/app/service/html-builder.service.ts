@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 import { CustomFunctionItem, FunctionInputType } from '../model/function-item';
 
 @Injectable({
@@ -71,6 +72,7 @@ export class HtmlBuilderService {
       paramArray.push(inputElement.value);
       counter++;
     }
+    const CORS_URL = "${environment.corsUrl}";
     ${item.function}
   }
   </script>`;

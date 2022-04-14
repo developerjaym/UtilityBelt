@@ -15,10 +15,15 @@
     title="Keep these changes and go back"
     *ngIf="!creating && tested"
   >
-  <app-icon icon="save"></app-icon>Save changes
+    <app-icon icon="save"></app-icon>Save changes
   </button>
-  <button class="create-form__button" (click)="test()" title="Make sure your custom form works">
-    <app-icon icon="test"></app-icon>{{ testing ? "Stop testing form" : "Test form" }}
+  <button
+    class="create-form__button"
+    (click)="test()"
+    title="Make sure your custom form works"
+  >
+    <app-icon icon="test"></app-icon
+    >{{ testing ? "Stop testing form" : "Test form" }}
   </button>
   <button [routerLink]="''"><app-icon icon="cancel"></app-icon>Cancel</button>
   <button
@@ -27,9 +32,15 @@
     title="Delete this custom form"
     *ngIf="!creating"
   >
-   <app-icon icon="delete"></app-icon>Delete
+    <app-icon icon="delete"></app-icon>Delete
   </button>
-  <button aria-label="Help" aria-haspopup="dialog" class="create-form__button" (click)="helpModalVisible = true" title="Learn how to create custom forms">
+  <button
+    aria-label="Help"
+    aria-haspopup="dialog"
+    class="create-form__button"
+    (click)="helpModalVisible = true"
+    title="Learn how to create custom forms"
+  >
     <app-icon icon="help"></app-icon>
   </button>
 </app-tool-bar>
@@ -79,18 +90,27 @@
           >Initial value
           <input type="text" formControlName="value" />
         </label>
-        <button class="create-form__button danger" (click)="removeInput(i)" title="Remove this input from your custom form">
+        <button
+          class="create-form__button danger"
+          (click)="removeInput(i)"
+          title="Remove this input from your custom form"
+        >
           <app-icon icon="delete"></app-icon>Remove input
         </button>
       </div>
     </div>
-    <button class="create-form__button" (click)="addInput()" title="Add another input to your custom form">
+    <button
+      class="create-form__button"
+      (click)="addInput()"
+      title="Add another input to your custom form"
+    >
       <app-icon icon="add"></app-icon>Add another input
     </button>
   </ng-container>
   <h2>Function</h2>
   <label class="create-form__label"
-    >Function* async (paramArray, log, print, localStorage) => {{ "{...}" }}
+    >Function* async (paramArray, log, print, localStorage, CORS_URL) =>
+    {{ "{...}" }}
     <ngs-code-editor
       class="create-form__function-input"
       [theme]="theme"
@@ -107,7 +127,11 @@
   [title]="'Are you sure?'"
   (onClose)="confirmDelete = false"
 >
-  <button class="modal-confirm-delete danger" (click)="destroy()" title="Permanently delete this custom form">
+  <button
+    class="modal-confirm-delete danger"
+    (click)="destroy()"
+    title="Permanently delete this custom form"
+  >
     <app-icon icon="delete"></app-icon>Yes, Delete
   </button>
 </app-modal>
@@ -119,23 +143,27 @@
 >
   <h3>Metadata</h3>
   <p>
-    Provide a title, subtitle, and tags. On the homepage, you can search by title and tags.
+    Provide a title, subtitle, and tags. On the homepage, you can search by
+    title and tags.
   </p>
   <h3>Inputs</h3>
   <p>
-    Add all the inputs you need. Give each input a label, a type (like date or number
-    or color), and optionally a default value. These inputs will be used to generate your
-    custom form.
+    Add all the inputs you need. Give each input a label, a type (like date or
+    number or color), and optionally a default value. These inputs will be used
+    to generate your custom form.
   </p>
   <h3>Function</h3>
   <p>
-    This is where you write the JavaScript function body. The function has four
+    This is where you write the JavaScript function body. The function has five
     arguments. The first, <code>paramArray</code>, is an array that holds the
     values of each input from your custom form. The second, <code>log</code>, is
     a function that outputs to the right side of the output pane. The third,
     <code>print</code>, is a function that outputs to the left side of the
     output pane. Use this function to output your results. The fourth,
     <code>localStorage</code>, is a proxy to localStorage. Use it the same way.
+    The fifth, <code>CORS_URL</code>, provides a proxy that prevents CORS
+    issues. Just do something like
+    <code>fetch(CORS_URL + "https://example.com")</code>.
   </p>
 </app-modal>
 
@@ -145,7 +173,5 @@
   (onClose)="onErrorModalClose()"
 >
   <h3>Something Went Wrong</h3>
-  <p>
-    We couldn't find the custom form you're looking for.
-  </p>
+  <p>We couldn't find the custom form you're looking for.</p>
 </app-modal>

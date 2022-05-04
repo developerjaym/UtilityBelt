@@ -12,8 +12,22 @@
       <option *ngFor="let item of dataList" [value]="item"></option>
     </datalist>
   </label>
-  <button [routerLink]="'create'" class="big-screen-only accent" title="Create a new custom form"><app-icon icon="add"></app-icon>Create</button>
-  <button (click)="modalVisible = true" class="big-screen-only" title="Learn about UtilityBelt" aria-label="Help" aria-haspopup="dialog"><app-icon icon="help"></app-icon></button>
+  <button
+    [routerLink]="'create'"
+    class="big-screen-only accent"
+    title="Create a new custom form"
+  >
+    <app-icon icon="add"></app-icon>Create
+  </button>
+  <button
+    (click)="modalVisible = true"
+    class="big-screen-only"
+    title="Learn about UtilityBelt"
+    aria-label="Help"
+    aria-haspopup="dialog"
+  >
+    <app-icon icon="help"></app-icon>
+  </button>
 </app-tool-bar>
 
 <app-custom-function-item
@@ -35,8 +49,10 @@
     I hit 'CREATE'. I give my custom form a name, subtitle, and tags (for
     searching). I then define the inputs for my custom form: customer number,
     work order type, and priority. I then write the function that takes those
-    three inputs' values and turns them into a valid JSON payload. I then test
-    my form and function and hit 'SAVE' when it works. My custom form is now in
-    localStorage, and I can easily search for it in the future.
+    three inputs' values and puts them into a valid JSON payload. I then test my
+    form and function and hit 'SAVE' when it works. My custom form is now in
+    localStorage, and I can easily search for it in the future. When I need a
+    work order payload, I fill out the form, hit 'EXECUTE FUNCTION' and then the
+    payload is printed out where I can copy it.
   </p>
 </app-modal>

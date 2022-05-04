@@ -10,6 +10,8 @@
 
 .modal {
   row-gap: 0;
+  max-height: calc(100vh - (2 * var(--margin-thick)));
+  overflow-y: auto;
 }
 
 .modal__title {

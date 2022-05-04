@@ -48,7 +48,6 @@
   --code-line-height: 14px;
   --small-font-size: 10px;
 
-  --card-min-width: 360px;
   --card-width: 72vw;
   --card-max-width: 900px;
 
@@ -110,7 +109,6 @@ app-logo {
 
   width: var(--card-width);
   max-width: var(--card-max-width);
-  min-width: var(--card-min-width);
 }
 .testing {
   border-width: var(--border-width-thick);
@@ -244,5 +242,6 @@ button:active svg path {
   :root {
     --margin-narrow: 4px;
     --margin-thick: 8px;
+    --card-width: 92vw;
   }
 }

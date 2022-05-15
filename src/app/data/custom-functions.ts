@@ -130,6 +130,25 @@ export class CustomFunctions {
       ],
     },
     {
+      title: 'Create QR Code',
+      subtitle: 'Sometimes it is useful',
+      tags: 'qr, qr code',
+      author: 'UtilityBelt',
+      function: 'let img = document.createElement("img");\nimg.setAttribute("src", `https://api.qrserver.com/v1/create-qr-code/?size=${paramArray[1]}x${paramArray[1]}&data=${paramArray[0].trim()}`);\nimg.setAttribute("width", paramArray[1]);\nimg.setAttribute("height", paramArray[1]);\noutputsElement.innerHTML = "";\noutputsElement.appendChild(img);',
+      inputs: [
+        {
+          label: 'Data (usually a URL)',
+          type: FunctionInputType.TEXTFIELD,
+          value: ''
+        },
+        {
+          label: 'Height/Width (in px)',
+          type: FunctionInputType.NUMBER,
+          value: '100'
+        },
+      ],
+    },
+    {
       title: 'Postal Carrier',
       subtitle: 'Test your API',
       tags: 'api, test, rest, post, patch, put, delete, options, get',

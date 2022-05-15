@@ -143,9 +143,10 @@ export class CustomFunctions {
           value: 'https://',
         },
         {
-          label: 'Method (GET, PATCH, PUT, POST, DELETE, OPTIONS)',
-          type: FunctionInputType.TEXTFIELD,
-          value: 'GET',
+          label: 'Method',
+          type: FunctionInputType.SELECT_OPTION,
+          options: 'GET, PATCH, PUT, POST, DELETE, OPTIONS',
+          value: 'POST'
         },
         {
           label: 'Body',

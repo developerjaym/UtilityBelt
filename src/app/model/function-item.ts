@@ -12,6 +12,7 @@ export interface FunctionInput {
   label: string;
   type: FunctionInputType;
   value: string;
+  options?: string;
 }
 
 export enum FunctionInputType {
@@ -21,5 +22,6 @@ export enum FunctionInputType {
   DATE = "DATE",
   TIME = "TIME",
   COLOR = "COLOR",
-  YES_NO = "YES_NO"
+  YES_NO = "YES_NO",
+  SELECT_OPTION = "SELECT_OPTION"
 }

@@ -114,6 +114,7 @@ try{
         label: ['Date of Birth', Validators.required],
         type: [FunctionInputType.DATE, Validators.required],
         value: [''],
+        options: ['']
       })
     );
   }

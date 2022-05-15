@@ -59,8 +59,12 @@ export class HtmlBuilderService {
     console.warn = (str) => log('WARN: ' + str);
 
     // clear output fields
-    document.getElementById("logArea").value = '';
-    document.getElementById("resultsArea").value = '';
+    if(document.getElementById("logArea")) {
+      document.getElementById("logArea").value = '';
+    }
+    if(document.getElementById("resultsArea")) {
+      document.getElementById("resultsArea").value = '';
+    }
 
     let paramArray = [];
     let counter = 0;
@@ -73,6 +77,7 @@ export class HtmlBuilderService {
       counter++;
     }
     const CORS_URL = "${environment.corsUrl}";
+    const outputsElement = Array.from(document.getElementsByClassName("outputs"))[0];
     ${item.function}
   }
   </script>`;
@@ -232,19 +237,15 @@ export class HtmlBuilderService {
   }
 
   generateInput(
-    inputValues: { label: string; type: string; value: string }[]
+    inputValues: { label: string; type: string; value: string; options?: string }[]
   ): string {
     let inputHtml = `<div class="inputs">`;
     for (let i = 0; i < inputValues.length; i++) {
       inputHtml += `<label class="input-label with-${inputValues[i].type.toLowerCase()}">${inputValues[i].label}`;
       if (inputValues[i].type === FunctionInputType.YES_NO) {
-        inputHtml += `<select id="${i}" value="${
-          inputValues[i].value
-        }"><option ${
-          'YES' === inputValues[i].value ? "selected" : ""
-        }>YES</option><option ${
-          'NO' === inputValues[i].value ? "selected" : ""
-        }>NO</option></select>`;
+        inputHtml += this.createSelectOption("YES,NO", i, inputValues[i].value);
+      } else if(inputValues[i].type === FunctionInputType.SELECT_OPTION) {
+        inputHtml += this.createSelectOption(inputValues[i].options, i, inputValues[i].value);
       } else if (inputValues[i].type === FunctionInputType.TEXTAREA) {
         inputHtml += `<textarea spellcheck="false" class="input-textarea" id="${i}">${inputValues[i].value}</textarea>`;
       } else  {
@@ -254,5 +255,19 @@ export class HtmlBuilderService {
     }
     inputHtml += `</div>`;
     return inputHtml;
+  }
+
+  private createSelectOption(options: string, i: number, defaultValue: string): string {
+    let selectOption = `<select id="${i}" value="${
+      defaultValue
+    }">`;
+    let optionsArray = options.split(',').filter(Boolean).map(s => s.trim()).forEach(
+      opt => {
+        selectOption += ` <option ${
+          opt === defaultValue ? "selected" : ""
+        }>${opt}</option>`
+      }
+    );
+    return selectOption + `</select>`
   }
 }

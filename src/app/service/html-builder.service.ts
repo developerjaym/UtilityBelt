@@ -261,13 +261,12 @@ export class HtmlBuilderService {
     let selectOption = `<select id="${i}" value="${
       defaultValue
     }">`;
-    let optionsArray = options.split(',').filter(Boolean).map(s => s.trim()).forEach(
+    return options.split(',').filter(Boolean).map(s => s.trim()).forEach(
       opt => {
         selectOption += ` <option ${
           opt === defaultValue ? "selected" : ""
         }>${opt}</option>`
       }
-    );
-    return selectOption + `</select>`
+    ) + `</select>`
   }
 }

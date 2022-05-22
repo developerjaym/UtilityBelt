@@ -134,19 +134,51 @@ export class CustomFunctions {
       subtitle: 'Sometimes it is useful',
       tags: 'qr, qr code',
       author: 'UtilityBelt',
-      function: 'let img = document.createElement("img");\nimg.setAttribute("src", `https://api.qrserver.com/v1/create-qr-code/?size=${paramArray[1]}x${paramArray[1]}&data=${paramArray[0].trim()}`);\nimg.setAttribute("width", paramArray[1]);\nimg.setAttribute("height", paramArray[1]);\noutputsElement.innerHTML = "";\noutputsElement.appendChild(img);',
+      function:
+        'let img = document.createElement("img");\nimg.setAttribute("src", `https://api.qrserver.com/v1/create-qr-code/?size=${paramArray[1]}x${paramArray[1]}&data=${paramArray[0].trim()}`);\nimg.setAttribute("width", paramArray[1]);\nimg.setAttribute("height", paramArray[1]);\noutputsElement.innerHTML = "";\noutputsElement.appendChild(img);',
       inputs: [
         {
           label: 'Data (usually a URL)',
           type: FunctionInputType.TEXTFIELD,
-          value: ''
+          value: '',
         },
         {
           label: 'Height/Width (in px)',
           type: FunctionInputType.NUMBER,
-          value: '100'
+          value: '100',
         },
       ],
+    },
+    {
+      title: 'Weather Forecast',
+      subtitle: 'It is okay at figuring out the weather',
+      tags: 'weather, temperature, wind',
+      author: 'UtilityBelt',
+      inputs: [
+        {
+          type: FunctionInputType.TEXTFIELD,
+          label: 'City (Optional)',
+          value: '',
+        },
+        {
+          type: FunctionInputType.SELECT_OPTION,
+          label: 'Units',
+          value: 'IMPERIAL',
+          options: 'METRIC,IMPERIAL',
+        },
+      ],
+      function:
+        'let city = paramArray[0];\n if(!city) {\n let cityResponse = await fetch("https://ip-fast.com/api/ip/?format=json&location=True");\nlet cityJson = await cityResponse.json();\ncity = cityJson.city;\n}\nlog("City: " + city);\nlet weatherResponse = await fetch("https://goweather.herokuapp.com/weather/" + city);\nlet weatherJson = await weatherResponse.json();\nlet degreeSymbol = "°";\nconst isMetric = paramArray[1] === "METRIC";\nlet tempConverter = (celsiusString) => isMetric ? celsiusString : Math.floor((parseFloat(celsiusString.split(" ")[0]) * 1.8)+32) + " " + degreeSymbol + "F";\nlet speedConverter = (kmString) => isMetric ? kmString : Math.floor(parseFloat(kmString.split(" ")[0]) / 1.609) + " mph";\nprint(`Temperature: ${tempConverter(weatherJson.temperature)}`);\nprint(`\\n`);\nprint(`Wind: ${speedConverter(weatherJson.wind)}`);\nprint(`\n---Extended Forecast---\n${weatherJson.forecast.map(d => `Day ${d.day}: ${tempConverter(d.temperature)} ${speedConverter(d.wind)}`).join("\\n")}`);',
+    },
+    {
+      title: 'Your IP Address',
+      subtitle: 'Find your public IP address',
+      tags: 'ip, address, ip address',
+      author: 'UtilityBelt',
+      function: `let prom = await fetch('https://api.ipify.org/?format=json');
+      let json = await prom.json();
+      print(json.ip);`,
+      inputs: [],
     },
     {
       title: 'Postal Carrier',
@@ -165,7 +197,7 @@ export class CustomFunctions {
           label: 'Method',
           type: FunctionInputType.SELECT_OPTION,
           options: 'GET, PATCH, PUT, POST, DELETE, OPTIONS',
-          value: 'POST'
+          value: 'POST',
         },
         {
           label: 'Body',

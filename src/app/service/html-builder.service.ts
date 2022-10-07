@@ -33,30 +33,45 @@ export class HtmlBuilderService {
         () => log('COPIED'), () => log('Failed to copy to clipboard. Do it yourself.')
       );
     }
-  function log(str) {
-    document.getElementById("logArea").value += str + '\\n';
+  function log(...strings) {
+    for(let str of strings) {
+      document.getElementById("logArea").value += str + '\\n';
+    }
   }
   function print(str) {
-    document.getElementById("resultsArea").value += str;
+    document.getElementById("resultsArea").value += str + '\\n';
   }
   async function execute() {
     // proxy localStorage
     const localStorage = {
       getItem: (key) => window.localStorage.getItem('${item.id}-' + key),
       setItem: (key, value) => window.localStorage.setItem('${item.id}-' + key, value),
-      clear: () => {}
+      removeItem: (key, value) => window.localStorage.removeItem('${item.id}-' + key),
+      clear: () => {
+        for(let key of Object.keys(window.localStorage)) {
+          if(key.startsWith('${item.id}')) {
+            window.localStorage.removeItem(key);
+          }
+        }
+
+      }
     }
 
-    // no sessionStorage yet
-    const sessionStorage = {};
+    // proxy sessionStorage
+    const sessionStorage = {
+      getItem: (key) => window.sessionStorage.getItem('${item.id}-' + key),
+      setItem: (key, value) => window.sessionStorage.setItem('${item.id}-' + key, value),
+      removeItem: (key, value) => window.sessionStorage.removeItem('${item.id}-' + key),
+      clear: () => {}
+    };
 
     // proxy console
     const console = {};
     console.log = log;
-    console.error = (str) => log('ERROR: ' + str);
-    console.info = (str) => log('INFO: ' + str);
-    console.debug = (str) => log('DEBUG: ' + str);
-    console.warn = (str) => log('WARN: ' + str);
+    console.error = (...str) => log(...str.map(s => 'ERROR: ' + s));
+    console.info = (...str) => log(...str.map(s => 'INFO: ' + s));
+    console.debug = (...str) => log(...str.map(s => 'DEBUG: ' + s));
+    console.warn = (...str) => log(...str.map(s => 'WARN: ' + s));
 
     // clear output fields
     if(document.getElementById("logArea")) {
@@ -67,14 +82,12 @@ export class HtmlBuilderService {
     }
 
     let paramArray = [];
-    let counter = 0;
-    while(true) {
+    for(let counter = 0; counter < 1_000; counter++) {
       let inputElement = document.getElementById(String(counter));
       if(!inputElement) {
         break;
       }
       paramArray.push(inputElement.value);
-      counter++;
     }
     const CORS_URL = "${environment.corsUrl}";
     const outputsElement = Array.from(document.getElementsByClassName("outputs"))[0];
@@ -261,12 +274,13 @@ export class HtmlBuilderService {
     let selectOption = `<select id="${i}" value="${
       defaultValue
     }">`;
-    return options.split(',').filter(Boolean).map(s => s.trim()).forEach(
+    options.split(',').filter(Boolean).map(s => s.trim()).forEach(
       opt => {
         selectOption += ` <option ${
           opt === defaultValue ? "selected" : ""
         }>${opt}</option>`
       }
-    ) + `</select>`
+    );
+    return selectOption + `</select>`
   }
 }

@@ -1,8 +1,6 @@
-import { CustomFunctionItem } from "./function-item";
+import { CustomFunctionItem } from './function-item';
 
 export interface ChatMessage {
-  conversationId?: string;
-    message: {
-        content: CustomFunctionItem[];
-    }
+  id?: string;
+  value: CustomFunctionItem[];
 }

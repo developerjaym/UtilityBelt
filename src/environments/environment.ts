@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   url: "http://localhost:4200/utility/",
-  serverUrl: "https://jayman-gameserver.herokuapp.com/",
-  corsUrl: "https://jayman-gameserver.herokuapp.com/cors?url="
+  serverUrl: "https://localstorage.tools/api/simple/",
+  corsUrl: "https://localstorage.tools/api/simple/cors?url="
 };
 
 /*

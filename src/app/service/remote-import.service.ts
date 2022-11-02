@@ -13,25 +13,21 @@ export class RemoteImportService {
   constructor(private http: HttpClient) { }
 
   importFromServer(conversationId: string): Observable<CustomFunctionItem[]> {
-    return this.http.get<ChatMessage[]>(environment.serverUrl + "conversations/" + conversationId + "?startingIndex=" + 0)
+    return this.http.get<ChatMessage>(environment.serverUrl + conversationId)
     .pipe(
-      map((messages) => messages[0].message.content)
+      map((message) => message.value)
     );
   }
 
   exportToServer(text: string): Observable<string> {
     const path = environment.url + "#/import";
-    return this.http.post<ChatMessage>(environment.serverUrl + "conversations/create", this.createMessage(text))
+    return this.http.post<ChatMessage>(environment.serverUrl, this.createMessage(text))
       .pipe(
-        map(message => path + "/" + message.conversationId)
+        map(message => path + "/" + message.id)
       );
   }
 
   private createMessage(text: string): ChatMessage {
-    return {
-      message: {
-        content: JSON.parse(text)
-      }
-    }
+    return JSON.parse(text);
   }
 }

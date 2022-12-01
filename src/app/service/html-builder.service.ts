@@ -15,7 +15,7 @@ export class HtmlBuilderService {
   public static INPUT_AND_LABEL_SIZE = '49px';
   public static OUTPUT_SIZE = '285px';
   public static BUTTON_SIZE = '32px';
-  public static INPUT_SIZE = '32px;'
+  public static INPUT_SIZE = '32px;';
 
   constructor(private sanitizer: DomSanitizer) { }
 

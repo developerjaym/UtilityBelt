@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CodeModel } from '@ngstack/code-editor';
 import { FunctionInputType } from 'src/app/model/function-item';
@@ -24,7 +24,7 @@ try{
 } catch(e) { log(e); }
 `;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   Types = Object.keys(FunctionInputType);
   tested = false;
   testing = false;
@@ -49,7 +49,7 @@ try{
   };
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private customFunctionService: CustomFunctionService,
     private router: Router,
     private activatedRoute: ActivatedRoute
@@ -101,7 +101,7 @@ try{
   }
 
   get inputs() {
-    return this.form.get('inputs') as FormArray;
+    return this.form.get('inputs') as UntypedFormArray;
   }
 
   onCodeChanged(event): void {
